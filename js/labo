@@ -1,0 +1,13 @@
+// LaBo TV tweaks
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("LaBo TV UI Loaded");
+
+  // Limit rows dynamically (safety)
+  document.querySelectorAll(".itemsContainer").forEach(container => {
+    const items = container.children;
+    for (let i = 5; i < items.length; i++) {
+      items[i].style.display = "none";
+    }
+  });
+});
