@@ -114,11 +114,10 @@ body,
 }
 
 /* ---------- OPTIONAL: BIGGER POSTERS (UNCOMMENT IF WANTED) */
-/*
 .cardBox {
   width: 200px !important;
 }
-*/
+
 /* =========================================
    LaBo TV HERO FIX (LG Optimised)
 ========================================= */
