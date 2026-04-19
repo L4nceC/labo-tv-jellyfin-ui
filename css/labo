@@ -151,6 +151,16 @@ body,
 .homePage .section0 .itemsContainer {
   margin-top: 10px;
 }
+/* Subtle info strip */
+.homePage::before {
+  content: "LaBo TV";
+  position: absolute;
+  top: 80px;
+  left: 20px;
+  font-size: 1.5em;
+  color: rgba(255,255,255,0.8);
+  z-index: 5;
+}
 /* =========================================
    END OF LABO TV THEME
 ========================================= */
