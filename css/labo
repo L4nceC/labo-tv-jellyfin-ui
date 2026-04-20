@@ -1,6 +1,6 @@
 /* =========================================
-   LaBo TV Theme v1 (LG Optimised)
-   Clean • Fast • Netflix-style
+   LaBo TV Theme v1.5
+   Netflix-style • LG Optimised • Kids Mode
 ========================================= */
 
 :root {
@@ -16,7 +16,7 @@ body,
   background-color: var(--bg) !important;
 }
 
-/* ---------- REMOVE CLUTTER ---------- */
+/* ---------- REMOVE HEAVY/USELESS UI ---------- */
 .sectionTitleTextButton,
 .emby-tabs-slider,
 .btnUserRating,
@@ -24,7 +24,6 @@ body,
 .cardOverlayButton,
 .listItem-border,
 .detailImageContainer,
-.backgroundContainer,
 .backdropImage,
 .blurHashCanvas {
   display: none !important;
@@ -63,12 +62,12 @@ body,
   will-change: transform;
 }
 
-/* Hover effect (lightweight) */
+/* ---------- HOVER ---------- */
 .cardBox:hover {
   transform: scale(1.04);
 }
 
-/* ---------- HERO ROW (FIRST ROW BIGGER) ---------- */
+/* ---------- HERO ROW ---------- */
 .homePage .itemsContainer:first-of-type .cardBox {
   width: 220px !important;
 }
@@ -87,48 +86,22 @@ body,
   display: none !important;
 }
 
-/* ---------- HEADER CLEAN ---------- */
+/* ---------- HEADER ---------- */
 .skinHeader {
   border-bottom: none !important;
 }
 
-/* ---------- LOGIN SCREEN ---------- */
-#loginPage {
-  background: linear-gradient(180deg, #000000, #111111);
-}
-
-#loginPage .pageTitle {
-  font-size: 2em;
-  color: var(--primary);
-  letter-spacing: 1px;
-}
-
-/* ---------- SCROLLBAR CLEAN ---------- */
-::-webkit-scrollbar {
-  height: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
-}
-
-/* ---------- OPTIONAL: BIGGER POSTERS (UNCOMMENT IF WANTED) */
-.cardBox {
-  width: 200px !important;
-}
-
 /* =========================================
-   LaBo TV HERO FIX (LG Optimised)
+   HERO BACKGROUND FIX (NO EMPTY SPACE)
 ========================================= */
 
-/* Restore hero background (lightweight) */
+/* Bring back lightweight backdrop */
 .backgroundContainer {
   display: block !important;
-  opacity: 0.25 !important; /* keeps it subtle */
+  opacity: 0.25 !important;
 }
 
-/* Dark gradient overlay (Netflix feel) */
+/* Gradient overlay */
 .backgroundContainer::after {
   content: "";
   position: absolute;
@@ -141,26 +114,103 @@ body,
   );
 }
 
-/* Lift content into hero */
+/* Lift content */
 .homePage .section0 {
   margin-top: -120px;
   padding-top: 120px;
 }
 
-/* Add spacing so it doesn't feel empty */
-.homePage .section0 .itemsContainer {
-  margin-top: 10px;
+/* =========================================
+   LOGIN BRANDING
+========================================= */
+
+#loginPage {
+  background: linear-gradient(180deg, #000000, #111111);
 }
-/* Subtle info strip */
-.homePage::before {
-  content: "LaBo TV";
-  position: absolute;
-  top: 80px;
-  left: 20px;
-  font-size: 1.5em;
-  color: rgba(255,255,255,0.8);
-  z-index: 5;
+
+#loginPage .pageTitle {
+  font-size: 2em;
+  color: var(--primary);
+  letter-spacing: 1px;
 }
+
+/* =========================================
+   SCROLLBAR CLEAN
+========================================= */
+
+::-webkit-scrollbar {
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+/* =========================================
+   KIDS MODE (AUTO DETECT - MODERN DEVICES)
+========================================= */
+
+/* Works on newer browsers */
+body:has(.headerUserButton[title*="Kids"]) .cardBox {
+  width: 230px !important;
+}
+
+body:has(.headerUserButton[title*="Kids"]) .homePage .itemsContainer:first-of-type .cardBox {
+  width: 260px !important;
+}
+
+body:has(.headerUserButton[title*="Kids"]) .cardText,
+body:has(.headerUserButton[title*="Kids"]) .sectionTitle {
+  display: none !important;
+}
+
+body:has(.headerUserButton[title*="Kids"]) .itemsContainer {
+  gap: 18px;
+}
+
+body:has(.headerUserButton[title*="Kids"]) .skinHeader {
+  background: #000 !important;
+}
+
+/* =========================================
+   KIDS MODE FALLBACK (LG SAFE)
+   👉 Manual toggle by uncommenting below
+========================================= */
+
+/*
+body .cardBox {
+  width: 230px !important;
+}
+
+body .homePage .itemsContainer:first-of-type .cardBox {
+  width: 260px !important;
+}
+
+body .cardText,
+body .sectionTitle {
+  display: none !important;
+}
+
+body .itemsContainer {
+  gap: 18px;
+}
+
+body .skinHeader {
+  background: #000 !important;
+}
+*/
+
+/* =========================================
+   OPTIONAL BIG POSTERS (GLOBAL)
+========================================= */
+
+/*
+.cardBox {
+  width: 200px !important;
+}
+*/
+
 /* =========================================
    END OF LABO TV THEME
 ========================================= */
