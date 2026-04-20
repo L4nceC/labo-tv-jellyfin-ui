@@ -1,6 +1,5 @@
 /* =========================================
-   LaBo TV Theme v2.1
-   CLEAN • STABLE • LG OPTIMISED
+   LaBo TV Theme v2 (FIXED + BADGES WORKING)
 ========================================= */
 
 :root {
@@ -14,7 +13,7 @@ html, body, .skinHeader {
   background-color: var(--bg) !important;
 }
 
-/* ---------- REMOVE CLUTTER ---------- */
+/* ---------- CLEAN UI ---------- */
 .sectionTitleTextButton,
 .emby-tabs-slider,
 .btnUserRating,
@@ -45,7 +44,7 @@ html, body, .skinHeader {
   overflow-x: auto;
 }
 
-/* Limit items for performance */
+/* Limit items */
 .itemsContainer .cardBox:nth-child(n+7) {
   display: none;
 }
@@ -68,16 +67,16 @@ html, body, .skinHeader {
   width: 220px !important;
 }
 
-/* Text cleanup */
+/* Text */
 .cardText {
   font-size: 0.75em !important;
   opacity: 0.75;
 }
 
-/* Remove overlays */
+/* Remove clutter */
 .cardIndicators,
 .mediaInfoItem,
-.cardOverlayContainer button {
+.cardOverlayContainer {
   display: none !important;
 }
 
@@ -113,15 +112,15 @@ html, body, .skinHeader {
 }
 
 /* =========================================
-   🎬 COMING SOON (TAG-BASED)
+   🎬 COMING SOON BADGE (SAFE)
 ========================================= */
 
-.cardOverlayContainer {
-  position: relative;
+.cardBox[data-type="Movie"]::before {
+  content: "";
 }
 
-/* Only if you tag item "comingsoon" */
-.cardBox[data-tags*="comingsoon"] .cardOverlayContainer::before {
+/* ONLY if you manually tag */
+.cardBox[data-tags*="comingsoon"]::before {
   content: "COMING SOON";
 
   position: absolute;
@@ -134,22 +133,20 @@ html, body, .skinHeader {
   padding: 3px 6px;
   border-radius: 6px;
 
-  z-index: 50;
-  pointer-events: none;
+  z-index: 20;
 }
 
 /* =========================================
-   🆕 NEW BADGE (WORKING FINAL VERSION)
+   🆕 NEW BADGE (WORKING VERSION)
 ========================================= */
 
-/* Apply ONLY to first row (Recently Added) */
-.homePage .itemsContainer:first-of-type 
-.cardOverlayContainer::after {
+/* Apply to FIRST ROW ONLY */
+.homePage .itemsContainer:first-of-type .cardBox::after {
   content: "NEW";
 
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 8px;
+  right: 8px;
 
   background: linear-gradient(135deg, #00a8e1, #0077b6);
   color: #fff;
@@ -160,37 +157,19 @@ html, body, .skinHeader {
   padding: 4px 8px;
   border-radius: 6px;
 
-  z-index: 60;
-  pointer-events: none;
+  z-index: 30;
 }
 
-/* Only show on first 5 items */
-.homePage .itemsContainer:first-of-type 
-.cardBox:nth-child(n+6) 
-.cardOverlayContainer::after {
+/* Only first 5 items */
+.homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6)::after {
   display: none;
 }
 
-/* NEW badge driven by JS */
-.cardBox.labo-new::after {
-  content: "NEW";
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  background: linear-gradient(135deg, #00a8e1, #0077b6);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 6px;
-  z-index: 100;
-}
-
 /* =========================================
-   👶 KIDS MODE (FIXED + SAFE)
+   👶 KIDS MODE (FIXED)
 ========================================= */
 
-/* Only works on supported browsers */
+/* ONLY apply if supported */
 @supports(selector(:has(*))) {
   body:has(.headerUserButton[title*="Kids"]) .cardBox {
     width: 230px !important;
@@ -200,23 +179,6 @@ html, body, .skinHeader {
   body:has(.headerUserButton[title*="Kids"]) .sectionTitle {
     display: none !important;
   }
-
-  body:has(.headerUserButton[title*="Kids"]) .itemsContainer {
-    gap: 18px;
-  }
-}
-
-/* =========================================
-   SCROLLBAR CLEAN
-========================================= */
-
-::-webkit-scrollbar {
-  height: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
 }
 
 /* =========================================
