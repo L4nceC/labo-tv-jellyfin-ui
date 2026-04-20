@@ -171,6 +171,21 @@ html, body, .skinHeader {
   display: none;
 }
 
+/* NEW badge driven by JS */
+.cardBox.labo-new::after {
+  content: "NEW";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: linear-gradient(135deg, #00a8e1, #0077b6);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 100;
+}
+
 /* =========================================
    👶 KIDS MODE (FIXED + SAFE)
 ========================================= */
