@@ -35,6 +35,83 @@ html, body, .skinHeader {
   color: #fff;
 }
 
+/* =========================================
+   LaBo TV — Premium Section Titles
+========================================= */
+
+/* Base style */
+.sectionTitle {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  font-size: 1.25em !important;
+  font-weight: 500 !important;
+
+  letter-spacing: 0.6px;
+  color: rgba(255,255,255,0.88);
+
+  margin-left: 18px;
+  margin-bottom: 12px;
+  margin-top: 6px;
+
+  display: flex;
+  align-items: center;
+
+  text-transform: none;
+}
+
+/* Clean divider line (your style) */
+.sectionTitle::before {
+  content: "";
+  display: inline-block;
+
+  width: 22px;
+  height: 2px;
+
+  background: rgba(255,255,255,0.4);
+
+  margin-right: 12px;
+  border-radius: 2px;
+}
+
+/* Subtle hover polish (desktop only, safe fallback on TV) */
+.sectionTitle:hover {
+  color: #ffffff;
+}
+
+/* First section = slightly more emphasis */
+.homePage .sectionTitle:first-of-type {
+  color: #ffffff;
+  font-weight: 600 !important;
+}
+
+.homePage .sectionTitle:first-of-type::before {
+  background: var(--primary);
+  width: 26px;
+}
+
+/* Improve spacing between rows */
+.homePage .section {
+  margin-bottom: 6px;
+}
+
+/* Optional: arrow (like Netflix/Prime) */
+.sectionTitle .material-icons {
+  margin-left: 6px;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+/* Remove clutter around titles */
+.sectionTitleTextButton {
+  background: none !important;
+  border: none !important;
+}
+
+/* Smooth visual hierarchy */
+.homePage .sectionTitle {
+  transition: color 0.2s ease;
+}
+
 /* ---------- ROWS ---------- */
 .itemsContainer {
   display: flex;
