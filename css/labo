@@ -211,5 +211,30 @@ body .skinHeader {
 */
 
 /* =========================================
+   LaBo TV — Coming Soon Section
+========================================= */
+
+/* Rename visually */
+.sectionTitle:has(+ .itemsContainer .cardText:contains("Coming Soon")),
+.sectionTitle:contains("Coming Soon") {
+  color: #ff6a00 !important;
+}
+
+/* Slight glow for featured feel */
+.itemsContainer .cardBox {
+  box-shadow: 0 0 0px rgba(255,106,0,0);
+  transition: all 0.2s ease;
+}
+
+.itemsContainer .cardBox:hover {
+  box-shadow: 0 0 10px rgba(255,106,0,0.4);
+}
+
+/* Optional: dim unreleased feel */
+.itemsContainer .cardText {
+  opacity: 0.7;
+}
+
+/* =========================================
    END OF LABO TV THEME
 ========================================= */
