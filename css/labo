@@ -250,5 +250,24 @@ body .skinHeader {
 }
 
 /* =========================================
+   NEW badge for recently added items
+========================================= */
+
+/* Apply to items in Recently Added row */
+.homePage .section[data-sectionname*="Recently"] .cardBox::before {
+  content: "NEW";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #00a8e1;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+/* =========================================
    END OF LABO TV THEME
 ========================================= */
