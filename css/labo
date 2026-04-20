@@ -250,23 +250,77 @@ body .skinHeader {
 }
 
 /* =========================================
-   NEW badge for recently added items
+   LaBo TV — NEW Badge System (LG Safe)
 ========================================= */
 
-/* Apply to items in Recently Added row */
-.homePage .section[data-sectionname*="Recently"] .cardBox::before {
+/* ---------- BASE BADGE STYLE ---------- */
+.cardBox::before {
+  content: "";
+  display: none;
+}
+
+/* ---------- APPLY TO FIRST ROW (Recently Added) ---------- */
+.homePage .itemsContainer:first-of-type .cardBox::before {
   content: "NEW";
+  display: block;
+
   position: absolute;
   top: 8px;
   right: 8px;
-  background: #00a8e1;
+
+  background: linear-gradient(135deg, #00a8e1, #0077b6);
   color: #fff;
+
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
+
   padding: 4px 8px;
   border-radius: 6px;
+
   z-index: 10;
 }
+
+/* ---------- ONLY SHOW ON FIRST 5 ITEMS ---------- */
+.homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6)::before {
+  display: none;
+}
+
+/* =========================================
+   OPTIONAL: MANUAL TAG SYSTEM (MORE CONTROL)
+   Add tag "new" in Jellyfin metadata
+========================================= */
+
+.cardBox[data-tags*="new"]::before {
+  content: "NEW";
+  display: block;
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  background: linear-gradient(135deg, #00a8e1, #0077b6);
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  padding: 4px 8px;
+  border-radius: 6px;
+
+  z-index: 10;
+}
+
+/* =========================================
+   OPTIONAL: NETFLIX RED VERSION
+   (uncomment if you prefer red)
+========================================= */
+
+/*
+.homePage .itemsContainer:first-of-type .cardBox::before,
+.cardBox[data-tags*="new"]::before {
+  background: #e50914;
+}
+*/
 
 /* =========================================
    END OF LABO TV THEME
