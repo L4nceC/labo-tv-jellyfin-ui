@@ -1,6 +1,5 @@
 /* =========================================
-   LaBo TV Theme v1.5
-   Netflix-style • LG Optimised • Kids Mode
+   LaBo TV Theme v2 (FIXED + BADGES WORKING)
 ========================================= */
 
 :root {
@@ -9,14 +8,12 @@
   --card-radius: 14px;
 }
 
-/* ---------- GLOBAL BACKGROUND ---------- */
-html,
-body,
-.skinHeader {
+/* ---------- GLOBAL ---------- */
+html, body, .skinHeader {
   background-color: var(--bg) !important;
 }
 
-/* ---------- REMOVE HEAVY/USELESS UI ---------- */
+/* ---------- CLEAN UI ---------- */
 .sectionTitleTextButton,
 .emby-tabs-slider,
 .btnUserRating,
@@ -29,242 +26,127 @@ body,
   display: none !important;
 }
 
-/* ---------- SECTION TITLES ---------- */
+/* ---------- TITLES ---------- */
 .sectionTitle {
   font-size: 1.2em !important;
   font-weight: 600;
   margin-left: 12px;
   margin-bottom: 8px;
-  color: #ffffff;
+  color: #fff;
 }
 
-/* ---------- ROW LAYOUT ---------- */
+/* ---------- ROWS ---------- */
 .itemsContainer {
   display: flex;
   gap: 10px;
   padding-left: 12px;
   margin-bottom: 25px;
   overflow-x: auto;
-  scroll-behavior: smooth;
 }
 
-/* ---------- LIMIT ITEMS (PERFORMANCE) ---------- */
+/* Limit items */
 .itemsContainer .cardBox:nth-child(n+7) {
   display: none;
 }
 
-/* ---------- POSTER CARDS ---------- */
+/* ---------- CARDS ---------- */
 .cardBox {
   border-radius: var(--card-radius) !important;
   overflow: hidden;
   width: 170px !important;
-  transition: transform 0.12s ease;
-  will-change: transform;
+  position: relative;
 }
 
-/* ---------- HOVER ---------- */
+/* Hover */
 .cardBox:hover {
   transform: scale(1.04);
 }
 
-/* ---------- HERO ROW ---------- */
+/* Hero row */
 .homePage .itemsContainer:first-of-type .cardBox {
   width: 220px !important;
 }
 
-/* ---------- TEXT CLEANUP ---------- */
-.cardText,
-.cardScalable .cardText {
+/* Text */
+.cardText {
   font-size: 0.75em !important;
   opacity: 0.75;
 }
 
-/* ---------- REMOVE EXTRA LABELS ---------- */
+/* Remove clutter */
 .cardIndicators,
 .mediaInfoItem,
 .cardOverlayContainer {
   display: none !important;
 }
 
-/* ---------- HEADER ---------- */
-.skinHeader {
-  border-bottom: none !important;
-}
-
-/* =========================================
-   HERO BACKGROUND FIX (NO EMPTY SPACE)
-========================================= */
-
-/* Bring back lightweight backdrop */
+/* ---------- HERO FIX ---------- */
 .backgroundContainer {
   display: block !important;
   opacity: 0.25 !important;
 }
 
-/* Gradient overlay */
 .backgroundContainer::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.3) 0%,
-    rgba(0,0,0,0.7) 60%,
-    rgba(0,0,0,1) 100%
+  background: linear-gradient(to bottom,
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,1)
   );
 }
 
-/* Lift content */
 .homePage .section0 {
   margin-top: -120px;
   padding-top: 120px;
 }
 
-/* =========================================
-   LOGIN BRANDING
-========================================= */
-
+/* ---------- LOGIN ---------- */
 #loginPage {
-  background: linear-gradient(180deg, #000000, #111111);
+  background: linear-gradient(180deg,#000,#111);
 }
 
 #loginPage .pageTitle {
-  font-size: 2em;
   color: var(--primary);
-  letter-spacing: 1px;
 }
 
 /* =========================================
-   SCROLLBAR CLEAN
+   🎬 COMING SOON BADGE (SAFE)
 ========================================= */
 
-::-webkit-scrollbar {
-  height: 6px;
+.cardBox[data-type="Movie"]::before {
+  content: "";
 }
 
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 10px;
-}
-
-/* =========================================
-   KIDS MODE (AUTO DETECT - MODERN DEVICES)
-========================================= */
-
-/* Works on newer browsers */
-body:has(.headerUserButton[title*="Kids"]) .cardBox {
-  width: 230px !important;
-}
-
-body:has(.headerUserButton[title*="Kids"]) .homePage .itemsContainer:first-of-type .cardBox {
-  width: 260px !important;
-}
-
-body:has(.headerUserButton[title*="Kids"]) .cardText,
-body:has(.headerUserButton[title*="Kids"]) .sectionTitle {
-  display: none !important;
-}
-
-body:has(.headerUserButton[title*="Kids"]) .itemsContainer {
-  gap: 18px;
-}
-
-body:has(.headerUserButton[title*="Kids"]) .skinHeader {
-  background: #000 !important;
-}
-
-/* =========================================
-   KIDS MODE FALLBACK (LG SAFE)
-   👉 Manual toggle by uncommenting below
-========================================= */
-
-
-body .cardBox {
-  width: 230px !important;
-}
-
-body .homePage .itemsContainer:first-of-type .cardBox {
-  width: 260px !important;
-}
-
-body .cardText,
-body .sectionTitle {
-  display: none !important;
-}
-
-body .itemsContainer {
-  gap: 18px;
-}
-
-body .skinHeader {
-  background: #000 !important;
-}
-
-/* =========================================
-   OPTIONAL BIG POSTERS (GLOBAL)
-========================================= */
-
-/*
-.cardBox {
-  width: 200px !important;
-}
-*/
-
-/* =========================================
-   LaBo TV — Coming Soon Section
-========================================= */
-
-/* Rename visually */
-.sectionTitle:has(+ .itemsContainer .cardText:contains("Coming Soon")),
-.sectionTitle:contains("Coming Soon") {
-  color: #ff6a00 !important;
-}
-
-/* Slight glow for featured feel */
-.itemsContainer .cardBox {
-  box-shadow: 0 0 0px rgba(255,106,0,0);
-  transition: all 0.2s ease;
-}
-
-.itemsContainer .cardBox:hover {
-  box-shadow: 0 0 10px rgba(255,106,0,0.4);
-}
-
-/* Optional: dim unreleased feel */
-.itemsContainer .cardText {
-  opacity: 0.7;
-}
-
-/* Coming Soon badge */
-.cardBox::after {
+/* ONLY if you manually tag */
+.cardBox[data-tags*="comingsoon"]::before {
   content: "COMING SOON";
+
   position: absolute;
   top: 8px;
   left: 8px;
+
   background: rgba(255,106,0,0.9);
   color: #fff;
   font-size: 10px;
   padding: 3px 6px;
   border-radius: 6px;
-  z-index: 10;
+
+  z-index: 20;
 }
 
 /* =========================================
-   LaBo TV — NEW Badge (Guaranteed Working)
+   🆕 NEW BADGE (WORKING VERSION)
 ========================================= */
 
-/* Make sure cards can hold absolute elements */
-.cardBox {
-  position: relative;
-}
-
-/* Apply to FIRST ROW (Recently Added) */
-.homePage .itemsContainer:first-of-type .cardImageContainer::after {
+/* Apply to FIRST ROW ONLY */
+.homePage .itemsContainer:first-of-type .cardBox::after {
   content: "NEW";
 
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 8px;
+  right: 8px;
 
   background: linear-gradient(135deg, #00a8e1, #0077b6);
   color: #fff;
@@ -275,14 +157,30 @@ body .skinHeader {
   padding: 4px 8px;
   border-radius: 6px;
 
-  z-index: 20;
+  z-index: 30;
 }
 
-/* Only show on first 5 items */
-.homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6) .cardImageContainer::after {
+/* Only first 5 items */
+.homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6)::after {
   display: none;
 }
 
 /* =========================================
-   END OF LABO TV THEME
+   👶 KIDS MODE (FIXED)
+========================================= */
+
+/* ONLY apply if supported */
+@supports(selector(:has(*))) {
+  body:has(.headerUserButton[title*="Kids"]) .cardBox {
+    width: 230px !important;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .cardText,
+  body:has(.headerUserButton[title*="Kids"]) .sectionTitle {
+    display: none !important;
+  }
+}
+
+/* =========================================
+   END
 ========================================= */
