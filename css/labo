@@ -250,23 +250,21 @@ body .skinHeader {
 }
 
 /* =========================================
-   LaBo TV — NEW Badge System (LG Safe)
+   LaBo TV — NEW Badge (Guaranteed Working)
 ========================================= */
 
-/* ---------- BASE BADGE STYLE ---------- */
-.cardBox::before {
-  content: "";
-  display: none;
+/* Make sure cards can hold absolute elements */
+.cardBox {
+  position: relative;
 }
 
-/* ---------- APPLY TO FIRST ROW (Recently Added) ---------- */
-.homePage .itemsContainer:first-of-type .cardBox::before {
+/* Apply to FIRST ROW (Recently Added) */
+.homePage .itemsContainer:first-of-type .cardImageContainer::after {
   content: "NEW";
-  display: block;
 
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 6px;
+  right: 6px;
 
   background: linear-gradient(135deg, #00a8e1, #0077b6);
   color: #fff;
@@ -277,50 +275,13 @@ body .skinHeader {
   padding: 4px 8px;
   border-radius: 6px;
 
-  z-index: 10;
+  z-index: 20;
 }
 
-/* ---------- ONLY SHOW ON FIRST 5 ITEMS ---------- */
-.homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6)::before {
+/* Only show on first 5 items */
+.homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6) .cardImageContainer::after {
   display: none;
 }
-
-/* =========================================
-   OPTIONAL: MANUAL TAG SYSTEM (MORE CONTROL)
-   Add tag "new" in Jellyfin metadata
-========================================= */
-
-.cardBox[data-tags*="new"]::before {
-  content: "NEW";
-  display: block;
-
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  background: linear-gradient(135deg, #00a8e1, #0077b6);
-  color: #fff;
-
-  font-size: 11px;
-  font-weight: 700;
-
-  padding: 4px 8px;
-  border-radius: 6px;
-
-  z-index: 10;
-}
-
-/* =========================================
-   OPTIONAL: NETFLIX RED VERSION
-   (uncomment if you prefer red)
-========================================= */
-
-/*
-.homePage .itemsContainer:first-of-type .cardBox::before,
-.cardBox[data-tags*="new"]::before {
-  background: #e50914;
-}
-*/
 
 /* =========================================
    END OF LABO TV THEME
