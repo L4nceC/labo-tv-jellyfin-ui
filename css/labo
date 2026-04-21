@@ -50,6 +50,12 @@ h2.sectionTitle.sectionTitle-cards::before {
   width: 26px;
 }
 
+h2.sectionTitle.sectionTitle-cards {
+  font-size: 1.3em !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.6px !important;
+  color: rgba(255,255,255,0.9) !important;
+}
 
 /* =========================================
 🎬 COMING SOON BADGE (SAFE)
