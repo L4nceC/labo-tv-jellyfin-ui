@@ -1,155 +1,117 @@
-/* =========================================
-   LaBo TV — Clean Base (No Layout Breaks)
-========================================= */
+/* =========================
+   LaBo TV — Netflix Clean
+   ========================= */
 
+/* ---- FONT ---- */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
+
+html, body {
+    font-family: "Inter", sans-serif !important;
+    background-color: #0b0f14;
+    color: #e5e7eb;
+}
+
+/* ---- GLOBAL COLORS ---- */
 :root {
-  --primary: #ffffff;
-  --bg: #000000;
+    --accent: #e50914; /* Netflix red */
+    --card-bg: #141a22;
+    --card-hover: #1f2937;
+    --text-main: #e5e7eb;
+    --text-dim: #9ca3af;
 }
 
-/* ---------- BACKGROUND ---------- */
-html, body, .skinHeader {
-  background-color: var(--bg) !important;
+/* ---- HEADER ---- */
+.skinHeader {
+    background: rgba(11, 15, 20, 0.85) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* ---------- SECTION TITLES ---------- */
-h2.sectionTitle.sectionTitle-cards {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-
-  font-weight: 700 !important; /* bold */
-  font-size: 1.2em !important;
-  letter-spacing: 0.5px;
-
-  color: #fff !important;
-
-  display: flex;
-  align-items: center;
-
-  margin-left: 16px !important;
-  margin-bottom: 10px !important;
+/* ---- CARDS ---- */
+.cardBox {
+    border-radius: 12px !important;
+    overflow: hidden;
+    background: var(--card-bg);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Netflix-style line */
-h2.sectionTitle.sectionTitle-cards::before {
-  content: "";
-  width: 18px;
-  height: 2px;
-  background: #fff;
-  margin-right: 10px;
+.card:hover .cardBox {
+    transform: scale(1.06);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    background: var(--card-hover);
+    z-index: 5;
 }
 
-/* ---------- PLAY BUTTON ---------- */
-.cardOverlayButtonIcon {
-  color: #000 !important;
+/* smooth image zoom */
+.cardImageContainer {
+    transition: transform 0.4s ease;
 }
 
-.cardOverlayButton {
-  background: #fff !important;
-  border-radius: 50% !important;
-  width: 42px !important;
-  height: 42px !important;
+.card:hover .cardImageContainer {
+    transform: scale(1.08);
 }
 
-/* ---------- HOVER (DESKTOP ONLY) ---------- */
-@media (hover: hover) {
-
-  .cardBox {
-    transition: all 0.15s ease;
-  }
-
-  .cardBox:hover {
-    transform: scale(1.05);
-    outline: 2px solid #ffffff;
-    outline-offset: -2px;
-    z-index: 10;
-  }
+/* ---- TITLES ---- */
+.cardText {
+    font-weight: 500;
+    color: var(--text-main);
 }
 
-/* ---------- CLEAN SMALL CLUTTER ---------- */
-.btnUserRating,
-.itemMiscInfo {
-  opacity: 0.7;
+.cardText-secondary {
+    color: var(--text-dim);
 }
 
-/* =========================================
-   👶 Kids Mode — FIXED (NO RENDER BUGS)
-========================================= */
-
-@supports(selector(:has(*))) {
-
-  body:has(.headerUserButton[title*="Kids"]) {
-
-    --primary: #ffcc00;
-    --accent: #4cc9f0;
-
-    background-color: #0a0f1f !important;
-  }
-
-  /* ❌ REMOVE permanent transform */
-  body:has(.headerUserButton[title*="Kids"]) .cardBox {
-    border-radius: 18px !important;
-  }
-
-  /* ✅ ONLY animate on hover (safe) */
-  @media (hover: hover) {
-    body:has(.headerUserButton[title*="Kids"]) .cardBox:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 18px rgba(76,201,240,0.6);
-    }
-  }
-
-  /* Ensure images always render */
-  body:has(.headerUserButton[title*="Kids"]) .cardImageContainer {
-    display: block !important;
-    transform: none !important;
-  }
-
-  /* Clean UI */
-  body:has(.headerUserButton[title*="Kids"]) .cardText {
+/* ---- HIDE CLUTTER ---- */
+.cardIndicators,
+.countIndicator,
+.mediaSourceIndicator {
     display: none !important;
-  }
-
-  /* Titles */
-  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle.sectionTitle-cards::before {
-    background: var(--primary);
-  }
-
-  /* Play button */
-  body:has(.headerUserButton[title*="Kids"]) .cardOverlayButton {
-    background: var(--accent) !important;
-  }
-}
-/* =========================================
-   🔧 IMAGE RENDER FIX (PC + TV SAFE)
-========================================= */
-
-/* Force image containers to behave normally */
-.cardImageContainer,
-.cardImage,
-.cardPadder {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-
-  transform: none !important;
-  filter: none !important;
 }
 
-/* Prevent lazy-load glitches */
-.cardImageContainer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  image-rendering: auto;
+/* ---- PLAY BUTTON ---- */
+.cardOverlayFab-primary {
+    background-color: var(--accent) !important;
+    border-radius: 50%;
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
 }
 
-/* Kill anything hiding images */
-.cardImageContainer::before,
-.cardImageContainer::after {
-  display: none !important;
-  content: none !important;
+.card:hover .cardOverlayFab-primary {
+    transform: scale(1.1);
 }
-/* =========================================
-END
-========================================= */
+
+/* ---- BUTTONS ---- */
+.emby-button {
+    border-radius: 6px !important;
+}
+
+.btnPlay {
+    background-color: var(--accent) !important;
+    color: white !important;
+    border-radius: 4px !important;
+}
+
+/* ---- SCROLLBARS (subtle) ---- */
+::-webkit-scrollbar {
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+}
+
+/* ---- BACKDROP ---- */
+.backgroundContainer.withBackdrop {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), #0b0f14 70%);
+}
+
+/* ---- LOGIN PAGE ---- */
+#loginPage {
+    background: linear-gradient(to bottom, #0b0f14, #000);
+}
+
+/* ---- REMOVE WEIRD OUTLINES ---- */
+*:focus {
+    outline: none !important;
+}
