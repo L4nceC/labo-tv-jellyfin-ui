@@ -1,15 +1,16 @@
 /* =========================================
-LaBo TV Theme v2 (FIXED + BADGES WORKING)
+   LaBo TV Theme v2.2 (CLEAN + FIXED)
 ========================================= */
+
 :root {
---primary: #ff6a00;
---bg: #0b0b0b;
---card-radius: 14px;
+  --primary: #ff6a00;
+  --bg: #0b0b0b;
+  --card-radius: 14px;
 }
 
 /* ---------- GLOBAL ---------- */
 html, body, .skinHeader {
-background-color: var(--bg) !important;
+  background-color: var(--bg) !important;
 }
 
 /* ---------- CLEAN UI ---------- */
@@ -22,65 +23,36 @@ background-color: var(--bg) !important;
 .detailImageContainer,
 .backdropImage,
 .blurHashCanvas {
-display: none !important;
+  display: none !important;
 }
 
-/* ---------- TITLES ---------- */
-.sectionTitle {
-font-size: 1.2em !important;
-font-weight: 600;
-margin-left: 12px;
-margin-bottom: 8px;
-color: #fff;
-}
-
-h2.sectionTitle.sectionTitle-cards {
-  font-size: 1.3em !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.6px !important;
-  color: rgba(255,255,255,0.9) !important;
-}
-
-h2.sectionTitle.sectionTitle-cards::before {
-  content: "" !important;
-  width: 22px !important;
-  height: 2px !important;
-  background: rgba(255,255,255,0.4) !important;
-  margin-right: 12px !important;
-}
-/* =========================================
-   LaBo TV — Clean Section Titles
-========================================= */
-
+/* ---------- SECTION TITLES (FINAL CLEAN) ---------- */
 h2.sectionTitle.sectionTitle-cards {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   font-size: 1.25em !important;
   font-weight: 500 !important;
-
   letter-spacing: 0.6px;
+
   color: rgba(255,255,255,0.9) !important;
 
   display: flex;
   align-items: center;
 
-  margin-left: 18px !important;
-  margin-bottom: 12px !important;
+  margin: 6px 0 12px 18px !important;
 }
 
-/* Divider line */
+/* Divider */
 h2.sectionTitle.sectionTitle-cards::before {
   content: "";
   width: 20px;
   height: 2px;
-
   background: rgba(255,255,255,0.4);
   margin-right: 10px;
-
   border-radius: 2px;
 }
 
-/* First row highlight */
+/* Highlight first row */
 .homePage .section:nth-of-type(1) h2.sectionTitle.sectionTitle-cards {
   color: #fff !important;
   font-weight: 600 !important;
@@ -90,232 +62,153 @@ h2.sectionTitle.sectionTitle-cards::before {
   background: var(--primary);
 }
 
-h2.sectionTitle.sectionTitle-cards:hover {
-  color: #ffffff;
-}
-
-/* ---------- ROWS ---------- */
+/* ---------- ROWS (FIXED SCROLL + SPACING) ---------- */
 .itemsContainer {
-display: flex;
-gap: 10px;
-padding-left: 12px;
-margin-bottom: 25px;
-overflow-x: auto;
+  display: flex;
+  gap: 12px;
+
+  padding: 0 18px; /* balanced instead of left only */
+  margin-bottom: 20px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
 }
 
-/* Limit items */
+/* Remove hard cutoff that causes layout shift */
 .itemsContainer .cardBox:nth-child(n+7) {
-display: none;
+  display: block;
 }
 
 /* ---------- CARDS ---------- */
 .cardBox {
-border-radius: var(--card-radius) !important;
-overflow: hidden;
-width: 170px !important;
-position: relative;
+  flex: 0 0 auto; /* CRITICAL FIX */
+
+  width: 170px;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+
+  position: relative;
+  transition: transform 0.15s ease;
 }
 
 /* Hover */
 .cardBox:hover {
-transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-/* Hero row */
+/* Hero row bigger */
 .homePage .itemsContainer:first-of-type .cardBox {
-width: 220px !important;
+  width: 220px;
 }
 
-/* Text */
+/* ---------- TEXT ---------- */
 .cardText {
-font-size: 0.75em !important;
-opacity: 0.75;
+  font-size: 0.75em !important;
+  opacity: 0.75;
 }
 
-/* Remove clutter */
-.cardIndicators,
-.mediaInfoItem,
-.cardOverlayContainer {
-display: none !important;
+/* Remove ONLY buttons, not container */
+.cardOverlayContainer button {
+  display: none !important;
 }
 
-/* ---------- HERO FIX ---------- */
+/* ---------- HERO BACKDROP ---------- */
 .backgroundContainer {
-display: block !important;
-opacity: 0.25 !important;
+  display: block !important;
+  opacity: 0.25 !important;
 }
 
 .backgroundContainer::after {
-content: "";
-position: absolute;
-inset: 0;
-background: linear-gradient(to bottom,
-rgba(0,0,0,0.3),
-rgba(0,0,0,0.7),
-rgba(0,0,0,1)
-);
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.3),
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,1)
+  );
 }
 
 .homePage .section0 {
-margin-top: -120px;
-padding-top: 120px;
+  margin-top: -120px;
+  padding-top: 120px;
 }
 
 /* ---------- LOGIN ---------- */
 #loginPage {
-background: linear-gradient(180deg,#000,#111);
+  background: linear-gradient(180deg,#000,#111);
 }
 
 #loginPage .pageTitle {
-color: var(--primary);
+  color: var(--primary);
 }
 
-/* =========================================
-🎬 COMING SOON BADGE (SAFE)
-========================================= */
-
-.cardBox[data-type="Movie"]::before {
-content: "";
-}
-
-/* ONLY if you manually tag */
+/* ---------- COMING SOON ---------- */
 .cardBox[data-tags*="comingsoon"]::before {
-content: "COMING SOON";
+  content: "COMING SOON";
 
-position: absolute;
-top: 8px;
-left: 8px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
 
-background: rgba(255,106,0,0.9);
-color: #fff;
-font-size: 10px;
-padding: 3px 6px;
-border-radius: 6px;
+  background: rgba(255,106,0,0.9);
+  color: #fff;
+  font-size: 10px;
 
-z-index: 20;
+  padding: 3px 6px;
+  border-radius: 6px;
+
+  z-index: 20;
 }
 
-/* =========================================
-🆕 NEW BADGE (WORKING VERSION)
-========================================= */
-
-/* Apply to FIRST ROW ONLY */
+/* ---------- NEW BADGE ---------- */
 .homePage .itemsContainer:first-of-type .cardBox::after {
-content: "NEW";
+  content: "NEW";
 
-position: absolute;
-top: 8px;
-right: 8px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 
-background: linear-gradient(135deg, #00a8e1, #0077b6);
-color: #fff;
+  background: linear-gradient(135deg, #00a8e1, #0077b6);
+  color: #fff;
 
-font-size: 11px;
-font-weight: 700;
+  font-size: 11px;
+  font-weight: 700;
 
-padding: 4px 8px;
-border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
 
-z-index: 30;
+  z-index: 30;
 }
 
-/* Only first 5 items */
+/* Limit to first 5 */
 .homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6)::after {
-display: none;
-}
-/* =========================================
-   LaBo TV — Section Titles (WORKING FIX)
-========================================= */
-
-/* Target ALL title types Jellyfin uses */
-.sectionTitle,
-.sectionTitle-cards,
-.sectionTitleTextButton,
-h2.sectionTitle {
-
-/* Typography */
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-size: 1.25em !important;
-  font-weight: 500 !important;
-
-  letter-spacing: 0.6px;
-  color: rgba(255,255,255,0.9) !important;
-
-/* Layout */
-  margin-left: 18px !important;
-  margin-bottom: 12px !important;
-  margin-top: 6px !important;
-
-  display: flex;
-  align-items: center;
+  display: none;
 }
 
-/* Divider line */
-.sectionTitle::before,
-.sectionTitle-cards::before,
-.sectionTitleTextButton::before,
-h2.sectionTitle::before {
-
-  content: "";
-  display: inline-block;
-
-  width: 22px;
-  height: 2px;
-
-  background: rgba(255,255,255,0.4);
-  margin-right: 12px;
-
-  border-radius: 2px;
-}
-
-/* First row highlight */
-.homePage .section:nth-of-type(1) .sectionTitle,
-.homePage .section:nth-of-type(1) .sectionTitleTextButton {
-  color: #ffffff !important;
-  font-weight: 600 !important;
-}
-
-/* First row accent line */
-.homePage .section:nth-of-type(1) .sectionTitle::before,
-.homePage .section:nth-of-type(1) .sectionTitleTextButton::before {
-  background: var(--primary);
-  width: 26px;
-}
-
-/* Remove ugly button styles */
-.sectionTitleTextButton {
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-}
-
-/* Optional arrow spacing */
-.sectionTitleTextButton .material-icons {
-  margin-left: 6px;
-  opacity: 0.6;
-}
-
-/* =========================================
-👶 KIDS MODE (FIXED)
-========================================= */
-
-/* ONLY apply if supported */
+/* ---------- KIDS MODE SAFE ---------- */
 @supports(selector(:has(*))) {
-body:has(.headerUserButton[title*="Kids"]) .cardBox {
-width: 230px !important;
+  body:has(.headerUserButton[title*="Kids"]) .cardBox {
+    width: 230px;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .cardText,
+  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle {
+    display: none !important;
+  }
 }
 
-body:has(.headerUserButton[title*="Kids"]) .cardText,
-body:has(.headerUserButton[title*="Kids"]) .sectionTitle {
-display: none !important;
-}
+/* ---------- SCROLLBAR CLEAN ---------- */
+::-webkit-scrollbar {
+  height: 6px;
 }
 
-h2.sectionTitle.sectionTitle-cards {
-  font-size: 1.3em !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.6px !important;
-  color: rgba(255,255,255,0.9) !important;
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
 }
 
 /* =========================================
