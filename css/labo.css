@@ -2,7 +2,9 @@
    COERICIUSFLIX — CLEAN NETFLIX STYLE THEME
    Built on ElegantFin
 ===================================================== */
-
+body {
+    border: 5px solid red !important;
+}
 /* =========================
    1. FONT + BASE
 ========================= */
