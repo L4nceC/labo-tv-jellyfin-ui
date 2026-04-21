@@ -115,3 +115,41 @@ html, body {
 *:focus {
     outline: none !important;
 }
+
+/* =========================
+   HERO / BACKDROP UPGRADE
+   ========================= */
+
+/* Make backdrop feel cinematic */
+.backgroundContainer.withBackdrop {
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2) 0%,
+        rgba(11,15,20,0.85) 60%,
+        #0b0f14 100%
+    ) !important;
+}
+
+/* Bigger, cleaner title */
+.nameContainer h1 {
+    font-size: 3em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Center content more like Netflix */
+.detailPagePrimaryContainer {
+    align-items: flex-start !important;
+    justify-content: flex-end;
+    padding-bottom: 2em;
+}
+
+/* Fade bottom content nicely */
+.itemBackdrop::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 40%;
+    width: 100%;
+    background: linear-gradient(to top, #0b0f14, transparent);
+}
