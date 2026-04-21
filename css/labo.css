@@ -1,16 +1,17 @@
 /* =========================================
-   LaBo TV — Clean Base (Stable Build)
+   LaBo TV v3 — CLEAN FOUNDATION (STABLE)
 ========================================= */
 
 :root {
   --primary: #ff6a00;
   --bg: #0b0b0b;
-  --card-radius: 14px;
+  --card-radius: 12px;
 }
 
 /* ---------- GLOBAL ---------- */
 html, body, .skinHeader {
   background-color: var(--bg) !important;
+  overflow-x: hidden; /* 🔥 kills page scrollbar */
 }
 
 /* ---------- REMOVE CLUTTER ---------- */
@@ -27,79 +28,78 @@ html, body, .skinHeader {
 /* ---------- SECTION TITLES ---------- */
 h2.sectionTitle.sectionTitle-cards {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-
-  font-size: 1.25em !important;
+  font-size: 1.2em !important;
   font-weight: 500 !important;
-  letter-spacing: 0.6px;
-
+  letter-spacing: 0.5px;
   color: rgba(255,255,255,0.9) !important;
 
   display: flex;
   align-items: center;
 
-  margin: 8px 0 14px 18px !important;
+  margin: 10px 0 10px 16px !important;
 }
 
-/* Netflix-style line */
+/* Netflix style line */
 h2.sectionTitle.sectionTitle-cards::before {
   content: "";
-  width: 20px;
+  width: 18px;
   height: 2px;
   background: rgba(255,255,255,0.4);
   margin-right: 10px;
-  border-radius: 2px;
 }
 
-/* ---------- ROWS ---------- */
+/* ---------- ROWS (FIXED) ---------- */
 .itemsContainer {
   display: flex;
-  gap: 14px;
 
-  padding: 0 18px;
-  margin-bottom: 24px;
+  gap: 10px; /* tighter */
+  padding: 0 16px;
+  margin-bottom: 18px;
 
   overflow-x: auto;
   overflow-y: hidden;
 
   scroll-behavior: smooth;
+
+  max-width: 100%; /* 🔥 prevents stretch */
 }
 
-/* ---------- CARDS ---------- */
+/* ---------- CARDS (CRITICAL FIX) ---------- */
 .cardBox {
-  flex: 0 0 auto;
+  flex: 0 0 auto; /* 🔥 stops stretching */
 
-  width: 170px;
+  width: 160px; /* slightly tighter */
   border-radius: var(--card-radius);
   overflow: hidden;
 
   position: relative;
+
   transition: transform 0.15s ease;
 }
 
-/* Hover (desktop) */
-.cardBox:hover {
-  transform: scale(1.05);
+/* First row slightly bigger */
+.homePage .section:nth-of-type(1) .cardBox {
+  width: 200px;
 }
 
-/* Bigger first row (hero feel) */
-.homePage .section:nth-of-type(1) .cardBox {
-  width: 220px;
+/* Hover (desktop only effect, harmless on TV) */
+.cardBox:hover {
+  transform: scale(1.04);
 }
 
 /* ---------- TEXT ---------- */
 .cardText {
-  font-size: 0.75em !important;
+  font-size: 0.72em !important;
   opacity: 0.75;
 }
 
-/* ---------- KEEP OVERLAY STRUCTURE (IMPORTANT) ---------- */
+/* ---------- KEEP STRUCTURE ---------- */
 .cardOverlayContainer button {
   display: none !important;
 }
 
-/* ---------- HERO BACKGROUND ---------- */
+/* ---------- HERO ---------- */
 .backgroundContainer {
-  display: block !important;
   opacity: 0.25 !important;
 }
 
@@ -115,56 +115,41 @@ h2.sectionTitle.sectionTitle-cards::before {
   );
 }
 
-.homePage .section0 {
-  margin-top: -120px;
-  padding-top: 120px;
-}
-
-/* ---------- SCROLLBAR CLEAN ---------- */
+/* ---------- SCROLLBAR (SUBTLE) ---------- */
 ::-webkit-scrollbar {
-  height: 6px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: rgba(255,255,255,0.2);
   border-radius: 10px;
 }
 
 /* =========================================
-   👶 KIDS MODE (SAFE + FUN)
+   👶 KIDS MODE (PLAYFUL BUT CLEAN)
 ========================================= */
 
 @supports(selector(:has(*))) {
 
   body:has(.headerUserButton[title*="Kids"]) {
-
     --primary: #ffcc00;
-    --bg: #0f172a;
   }
 
   body:has(.headerUserButton[title*="Kids"]) .cardBox {
-    width: 220px;
+    width: 200px;
     border-radius: 18px;
   }
 
-  body:has(.headerUserButton[title*="Kids"]) .cardBox:hover {
-    transform: scale(1.08);
-  }
-
-  body:has(.headerUserButton[title*="Kids"]) .sectionTitle {
-    color: #fff !important;
-  }
-
-  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle::before {
-    background: var(--primary);
-  }
-
   body:has(.headerUserButton[title*="Kids"]) .itemsContainer {
-    gap: 18px;
+    gap: 14px;
   }
 
   body:has(.headerUserButton[title*="Kids"]) .cardText {
     display: none;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle::before {
+    background: var(--primary);
   }
 }
 
