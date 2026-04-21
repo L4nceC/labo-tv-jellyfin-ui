@@ -1,8 +1,12 @@
-/* =========================
-   LaBo TV — Netflix Clean
-   ========================= */
+/* =====================================================
+   COERICIUSFLIX — CLEAN NETFLIX STYLE THEME
+   Built on ElegantFin
+===================================================== */
 
-/* ---- FONT ---- */
+/* =========================
+   1. FONT + BASE
+========================= */
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap");
 
 html, body {
@@ -11,23 +15,59 @@ html, body {
     color: #e5e7eb;
 }
 
-/* ---- GLOBAL COLORS ---- */
+/* =========================
+   2. CORE VARIABLES
+========================= */
+
 :root {
-    --accent: #e50914; /* Netflix red */
+    --accent: #e50914;
+
+    --darkerGradientPoint: #0b0b0f;
+    --lighterGradientPoint: #14141c;
+
+    --headerColor: rgba(10, 10, 15, 0.85);
+    --drawerColor: rgba(15, 15, 20, 0.95);
+
+    --textColor: #ffffff;
+    --dimTextColor: #b3b3b3;
+
+    --selectorBackgroundColor: rgba(255,255,255,0.08);
+
     --card-bg: #141a22;
     --card-hover: #1f2937;
-    --text-main: #e5e7eb;
-    --text-dim: #9ca3af;
+
+    --uiAccentColor: #e50914;
+    --btnSubmitColor: #e50914;
+    --btnSubmitBorderColor: #ff2a2a;
+
+    /* 🔥 FIXED RAW URLS */
+    --loginPageBgUrl: url("https://raw.githubusercontent.com/L4nceC/labo-tv-jellyfin-ui/main/img/splashscreen.png");
+    --loginPageText: "CoericiusFlix";
 }
 
-/* ---- HEADER ---- */
+/* =========================
+   3. HEADER
+========================= */
+
 .skinHeader {
-    background: rgba(11, 15, 20, 0.85) !important;
+    background: var(--headerColor) !important;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* ---- CARDS ---- */
+/* Replace title with logo */
+.headerLeft .pageTitle {
+    background: url("https://raw.githubusercontent.com/L4nceC/labo-tv-jellyfin-ui/main/img/logo.png") no-repeat left center;
+    background-size: contain;
+    width: 180px;
+    height: 40px;
+    text-indent: -9999px;
+}
+
+/* =========================
+   4. CARDS (Netflix feel)
+========================= */
+
 .cardBox {
     border-radius: 12px !important;
     overflow: hidden;
@@ -42,7 +82,7 @@ html, body {
     z-index: 5;
 }
 
-/* smooth image zoom */
+/* smoother zoom */
 .cardImageContainer {
     transition: transform 0.4s ease;
 }
@@ -51,28 +91,57 @@ html, body {
     transform: scale(1.08);
 }
 
-/* ---- TITLES ---- */
+/* cinematic hover lift (ElegantFin override safe) */
+.card-hoverable:hover .cardScalable {
+    transform: scale(1.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+
+/* =========================
+   5. TEXT
+========================= */
+
 .cardText {
     font-weight: 500;
-    color: var(--text-main);
+    color: var(--textColor);
 }
 
 .cardText-secondary {
-    color: var(--text-dim);
+    color: var(--dimTextColor);
 }
 
-/* ---- HIDE CLUTTER ---- */
-.cardIndicators,
-.countIndicator,
-.mediaSourceIndicator {
-    display: none !important;
+.sectionTitle {
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-/* ---- PLAY BUTTON ---- */
+/* =========================
+   6. BUTTONS
+========================= */
+
+.emby-button {
+    border-radius: 6px !important;
+}
+
+.btnPlay,
+.btnPlay.detailButton {
+    background: var(--accent) !important;
+    color: white !important;
+    border: none;
+}
+
+.btnPlay:hover {
+    background: #ff2a2a !important;
+}
+
+.detailButton:not(.btnPlay) {
+    background: rgba(255,255,255,0.08);
+}
+
+/* play button on cards */
 .cardOverlayFab-primary {
     background-color: var(--accent) !important;
     border-radius: 50%;
-    transform: scale(0.9);
     transition: transform 0.2s ease;
 }
 
@@ -80,110 +149,20 @@ html, body {
     transform: scale(1.1);
 }
 
-/* ---- BUTTONS ---- */
-.emby-button {
-    border-radius: 6px !important;
-}
-
-.btnPlay {
-    background-color: var(--accent) !important;
-    color: white !important;
-    border-radius: 4px !important;
-}
-
-/* ---- SCROLLBARS (subtle) ---- */
-::-webkit-scrollbar {
-    height: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.15);
-    border-radius: 10px;
-}
-
-/* ---- BACKDROP ---- */
-.backgroundContainer.withBackdrop {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.2), #0b0f14 70%);
-}
-
-/* ---- LOGIN PAGE ---- */
-#loginPage {
-    background: linear-gradient(to bottom, #0b0f14, #000);
-}
-
-
-
-/* ---- REMOVE WEIRD OUTLINES ---- */
-*:focus {
-    outline: none !important;
-}
-
-/* === COERICIUSFLIX LOGIN BRANDING === */
-
-:root {
-    --loginPageBgUrl: url("https://github.com/L4nceC/labo-tv-jellyfin-ui/edit/main/img/splashscreen.png");
-    --loginPageText: "CoericiusFlix";
-}
-
-/* Background polish */
-#loginPage {
-    background-size: cover !important;
-    background-position: center !important;
-}
-
-/* Login box styling */
-#loginPage .padded-left.padded-right.padded-bottom-page {
-    background: rgba(0, 0, 0, 0.65) !important;
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-}
-
-/* Replace title with logo */
-.visualLoginForm::before,
-.manualLoginForm::before {
-    content: "";
-    display: block;
-    background: url("YOUR_LOGO_URL_HERE") no-repeat center;
-    background-size: contain;
-    height: 120px;
-    margin-bottom: 10px;
-}
-
-/* Hide default Jellyfin logo */
-.pageTitle,
-h1 {
-    display: none !important;
-}
-
 /* =========================
-   HERO / BACKDROP UPGRADE
-   ========================= */
+   7. BACKDROP / HERO
+========================= */
 
-/* Make backdrop feel cinematic */
 .backgroundContainer.withBackdrop {
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.2),
         rgba(11,15,20,0.85) 60%,
         #0b0f14 100%
     ) !important;
 }
 
-/* Bigger, cleaner title */
-.nameContainer h1 {
-    font-size: 3em;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-}
-
-/* Center content more like Netflix */
-.detailPagePrimaryContainer {
-    align-items: flex-start !important;
-    justify-content: flex-end;
-    padding-bottom: 2em;
-}
-
-/* Fade bottom content nicely */
+/* cinematic fade */
 .itemBackdrop::after {
     content: "";
     position: absolute;
@@ -193,93 +172,72 @@ h1 {
     background: linear-gradient(to top, #0b0f14, transparent);
 }
 
-/* === COERICIUSFLIX CORE THEME === */
-
-:root {
-    --uiAccentColor: #e50914;
-    --btnSubmitColor: #e50914;
-    --btnSubmitBorderColor: #ff2a2a;
-
-    --darkerGradientPoint: #0b0b0f;
-    --lighterGradientPoint: #14141c;
-
-    --headerColor: rgba(10, 10, 15, 0.85);
-    --drawerColor: rgba(15, 15, 20, 0.95);
-
-    --textColor: #ffffff;
-    --dimTextColor: #b3b3b3;
-
-    --selectorBackgroundColor: rgba(255,255,255,0.08);
+/* title styling */
+.nameContainer h1 {
+    font-size: 3em;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
-/* Cinematic hover lift */
+/* =========================
+   8. LOGIN BRANDING
+========================= */
 
-.card-hoverable:hover .cardScalable {
-    transform: scale(1.08);
-    z-index: 5;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+#loginPage {
+    background-size: cover !important;
+    background-position: center !important;
 }
 
-.cardOverlayContainer {
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.9),
-        transparent
-    );
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    background: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
 }
 
-/* Top section cinematic feel */
-
-.itemBackdrop::after {
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.9)
-    );
-}
-
-/* Primary buttons */
-
-.btnPlay.detailButton {
-    background: #e50914 !important;
-    color: white !important;
-    border: none;
-}
-
-.btnPlay.detailButton:hover {
-    background: #ff2a2a !important;
-}
-
-/* Secondary buttons */
-
-.detailButton:not(.btnPlay) {
-    background: rgba(255,255,255,0.08);
-}
-
-/* Replace header title with logo */
-
-.headerLeft .pageTitle {
-    background: url("https://github.com/L4nceC/labo-tv-jellyfin-ui/edit/main/img/logo.png") no-repeat left center;
+.visualLoginForm::before,
+.manualLoginForm::before {
+    content: "";
+    display: block;
+    background: url("https://raw.githubusercontent.com/L4nceC/labo-tv-jellyfin-ui/main/img/logo.png") no-repeat center;
     background-size: contain;
-    width: 180px;
-    height: 40px;
-    text-indent: -9999px;
+    height: 120px;
+    margin-bottom: 10px;
 }
 
-/* Smooth horizontal rows */
+/* =========================
+   9. UX POLISH
+========================= */
 
+/* remove clutter */
+.cardIndicators,
+.countIndicator,
+.mediaSourceIndicator {
+    display: none !important;
+}
+
+/* smooth scroll */
 .emby-scroller {
     scroll-behavior: smooth;
 }
 
-/* Section titles */
-
-.sectionTitle {
-    font-weight: 700;
-    letter-spacing: 0.5px;
+/* scrollbars */
+::-webkit-scrollbar {
+    height: 6px;
 }
 
-/* Fade-in for content */
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+}
+
+/* remove outlines */
+*:focus {
+    outline: none !important;
+}
+
+/* =========================
+   10. ANIMATION
+========================= */
 
 .card {
     animation: fadeIn 0.4s ease;
