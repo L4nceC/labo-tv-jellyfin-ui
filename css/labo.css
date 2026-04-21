@@ -48,59 +48,50 @@ h2.sectionTitle.sectionTitle-cards::before {
   background: rgba(255,255,255,0.4) !important;
   margin-right: 12px !important;
 }
-/* TEST — Section Titles */
-h2.sectionTitle.sectionTitle-cards {
-  color: #00ff88 !important;
-  font-size: 2em !important;
-  letter-spacing: 2px !important;
-}
 /* =========================================
-   LaBo TV — Section Titles (FINAL WORKING)
+   LaBo TV — Clean Section Titles
 ========================================= */
 
-/* Target YOUR exact element */
 h2.sectionTitle.sectionTitle-cards {
-
-/* Typography */
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-size: 1.3em !important;
+
+  font-size: 1.25em !important;
   font-weight: 500 !important;
 
   letter-spacing: 0.6px;
   color: rgba(255,255,255,0.9) !important;
 
-/* Layout */
   display: flex;
   align-items: center;
 
   margin-left: 18px !important;
   margin-bottom: 12px !important;
-  margin-top: 6px !important;
 }
 
 /* Divider line */
 h2.sectionTitle.sectionTitle-cards::before {
   content: "";
-
-  width: 22px;
+  width: 20px;
   height: 2px;
 
   background: rgba(255,255,255,0.4);
-  margin-right: 12px;
+  margin-right: 10px;
 
   border-radius: 2px;
 }
 
 /* First row highlight */
 .homePage .section:nth-of-type(1) h2.sectionTitle.sectionTitle-cards {
-  color: #ffffff !important;
+  color: #fff !important;
   font-weight: 600 !important;
 }
 
-/* First row accent line */
 .homePage .section:nth-of-type(1) h2.sectionTitle.sectionTitle-cards::before {
   background: var(--primary);
-  width: 26px;
+}
+
+h2.sectionTitle.sectionTitle-cards:hover {
+  color: #ffffff;
 }
 
 /* ---------- ROWS ---------- */
