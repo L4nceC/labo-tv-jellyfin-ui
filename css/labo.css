@@ -1,5 +1,5 @@
 /* =========================================
-   LaBo TV Theme v2.2 (CLEAN + FIXED)
+   LaBo TV — Clean Base (Stable Build)
 ========================================= */
 
 :root {
@@ -13,20 +13,18 @@ html, body, .skinHeader {
   background-color: var(--bg) !important;
 }
 
-/* ---------- CLEAN UI ---------- */
-.sectionTitleTextButton,
+/* ---------- REMOVE CLUTTER ---------- */
 .emby-tabs-slider,
 .btnUserRating,
 .itemMiscInfo,
 .cardOverlayButton,
 .listItem-border,
 .detailImageContainer,
-.backdropImage,
 .blurHashCanvas {
   display: none !important;
 }
 
-/* ---------- SECTION TITLES (FINAL CLEAN) ---------- */
+/* ---------- SECTION TITLES ---------- */
 h2.sectionTitle.sectionTitle-cards {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -39,10 +37,10 @@ h2.sectionTitle.sectionTitle-cards {
   display: flex;
   align-items: center;
 
-  margin: 6px 0 12px 18px !important;
+  margin: 8px 0 14px 18px !important;
 }
 
-/* Divider */
+/* Netflix-style line */
 h2.sectionTitle.sectionTitle-cards::before {
   content: "";
   width: 20px;
@@ -52,23 +50,13 @@ h2.sectionTitle.sectionTitle-cards::before {
   border-radius: 2px;
 }
 
-/* Highlight first row */
-.homePage .section:nth-of-type(1) h2.sectionTitle.sectionTitle-cards {
-  color: #fff !important;
-  font-weight: 600 !important;
-}
-
-.homePage .section:nth-of-type(1) h2.sectionTitle.sectionTitle-cards::before {
-  background: var(--primary);
-}
-
-/* ---------- ROWS (FIXED SCROLL + SPACING) ---------- */
+/* ---------- ROWS ---------- */
 .itemsContainer {
   display: flex;
-  gap: 12px;
+  gap: 14px;
 
-  padding: 0 18px; /* balanced instead of left only */
-  margin-bottom: 20px;
+  padding: 0 18px;
+  margin-bottom: 24px;
 
   overflow-x: auto;
   overflow-y: hidden;
@@ -76,14 +64,9 @@ h2.sectionTitle.sectionTitle-cards::before {
   scroll-behavior: smooth;
 }
 
-/* Remove hard cutoff that causes layout shift */
-.itemsContainer .cardBox:nth-child(n+7) {
-  display: block;
-}
-
 /* ---------- CARDS ---------- */
 .cardBox {
-  flex: 0 0 auto; /* CRITICAL FIX */
+  flex: 0 0 auto;
 
   width: 170px;
   border-radius: var(--card-radius);
@@ -93,13 +76,13 @@ h2.sectionTitle.sectionTitle-cards::before {
   transition: transform 0.15s ease;
 }
 
-/* Hover */
+/* Hover (desktop) */
 .cardBox:hover {
   transform: scale(1.05);
 }
 
-/* Hero row bigger */
-.homePage .itemsContainer:first-of-type .cardBox {
+/* Bigger first row (hero feel) */
+.homePage .section:nth-of-type(1) .cardBox {
   width: 220px;
 }
 
@@ -109,12 +92,12 @@ h2.sectionTitle.sectionTitle-cards::before {
   opacity: 0.75;
 }
 
-/* Remove ONLY buttons, not container */
+/* ---------- KEEP OVERLAY STRUCTURE (IMPORTANT) ---------- */
 .cardOverlayContainer button {
   display: none !important;
 }
 
-/* ---------- HERO BACKDROP ---------- */
+/* ---------- HERO BACKGROUND ---------- */
 .backgroundContainer {
   display: block !important;
   opacity: 0.25 !important;
@@ -137,76 +120,6 @@ h2.sectionTitle.sectionTitle-cards::before {
   padding-top: 120px;
 }
 
-/* ---------- LOGIN ---------- */
-#loginPage {
-  background: linear-gradient(180deg,#000,#111);
-}
-
-#loginPage .pageTitle {
-  color: var(--primary);
-}
-
-/* ---------- COMING SOON ---------- */
-.cardBox[data-tags*="comingsoon"]::before {
-  content: "COMING SOON";
-
-  position: absolute;
-  top: 8px;
-  left: 8px;
-
-  background: rgba(255,106,0,0.9);
-  color: #fff;
-  font-size: 10px;
-
-  padding: 3px 6px;
-  border-radius: 6px;
-
-  z-index: 20;
-}
-
-/* =========================================
-   🆕 NEW BADGE — FIXED (ONLY FIRST ROW)
-========================================= */
-
-/* Target ONLY first section on homepage */
-.homePage .section:nth-of-type(1) 
-.itemsContainer .cardBox::after {
-  content: "NEW";
-
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  background: linear-gradient(135deg, #00a8e1, #0077b6);
-  color: #fff;
-
-  font-size: 11px;
-  font-weight: 700;
-
-  padding: 4px 8px;
-  border-radius: 6px;
-
-  z-index: 30;
-}
-
-/* Limit to first 5 items ONLY */
-.homePage .section:nth-of-type(1) 
-.itemsContainer .cardBox:nth-child(n+6)::after {
-  display: none;
-}
-
-/* ---------- KIDS MODE SAFE ---------- */
-@supports(selector(:has(*))) {
-  body:has(.headerUserButton[title*="Kids"]) .cardBox {
-    width: 230px;
-  }
-
-  body:has(.headerUserButton[title*="Kids"]) .cardText,
-  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle {
-    display: none !important;
-  }
-}
-
 /* ---------- SCROLLBAR CLEAN ---------- */
 ::-webkit-scrollbar {
   height: 6px;
@@ -215,6 +128,44 @@ h2.sectionTitle.sectionTitle-cards::before {
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 10px;
+}
+
+/* =========================================
+   👶 KIDS MODE (SAFE + FUN)
+========================================= */
+
+@supports(selector(:has(*))) {
+
+  body:has(.headerUserButton[title*="Kids"]) {
+
+    --primary: #ffcc00;
+    --bg: #0f172a;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .cardBox {
+    width: 220px;
+    border-radius: 18px;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .cardBox:hover {
+    transform: scale(1.08);
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .sectionTitle {
+    color: #fff !important;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle::before {
+    background: var(--primary);
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .itemsContainer {
+    gap: 18px;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .cardText {
+    display: none;
+  }
 }
 
 /* =========================================
