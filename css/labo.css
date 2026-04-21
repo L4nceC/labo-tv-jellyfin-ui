@@ -72,5 +72,67 @@ h2.sectionTitle.sectionTitle-cards::before {
 }
 
 /* =========================================
+   👶 LaBo TV — Kids Mode (Clean Build)
+========================================= */
+
+/* Only activate if profile name contains "Kids" */
+@supports(selector(:has(*))) {
+
+  body:has(.headerUserButton[title*="Kids"]) {
+
+    /* 🎨 Colourful vibe */
+    --primary: #ffcc00;
+    --accent: #4cc9f0;
+
+    background-color: #0a0f1f !important;
+  }
+
+  /* Bigger, chunkier cards (but SAFE sizing) */
+  body:has(.headerUserButton[title*="Kids"]) .cardBox {
+    transform: scale(1.05);
+    border-radius: 18px !important;
+  }
+
+  /* Add subtle glow instead of borders */
+  body:has(.headerUserButton[title*="Kids"]) .cardBox {
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transition: all 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    body:has(.headerUserButton[title*="Kids"]) .cardBox:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 18px rgba(76,201,240,0.6);
+    }
+  }
+
+  /* Simplify UI (less text clutter) */
+  body:has(.headerUserButton[title*="Kids"]) .cardText {
+    display: none !important;
+  }
+
+  /* Make section titles brighter + fun */
+  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle.sectionTitle-cards {
+    color: #ffffff !important;
+    letter-spacing: 1px;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) h2.sectionTitle.sectionTitle-cards::before {
+    background: var(--primary);
+    height: 3px;
+  }
+
+  /* Play button more playful */
+  body:has(.headerUserButton[title*="Kids"]) .cardOverlayButton {
+    background: var(--accent) !important;
+  }
+
+  body:has(.headerUserButton[title*="Kids"]) .cardOverlayButtonIcon {
+    color: #000 !important;
+  }
+}
+
+
+/* =========================================
 END
 ========================================= */
