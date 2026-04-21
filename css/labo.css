@@ -111,6 +111,56 @@ html, body {
     background: linear-gradient(to bottom, #0b0f14, #000);
 }
 
+/* =========================
+   COERICIUSFLIX BRANDING
+   ========================= */
+
+:root {
+    --loginPageBgUrl: url("https://your-image-link-here.jpg");
+    --loginPageText: "CoericiusFlix";
+}
+
+/* Main login title */
+.manualLoginForm::before,
+.visualLoginForm::before {
+    content: "CoericiusFlix";
+    font-size: 2.4em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: white;
+}
+
+/* Tagline under title */
+#loginPage .padded-left.padded-right.padded-bottom-page::after {
+    content: "Pick something good";
+    display: block;
+    text-align: center;
+    margin-top: -0.5em;
+    margin-bottom: 1.5em;
+    font-size: 1em;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+}
+
+/* Glass card upgrade */
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    background: rgba(15, 20, 28, 0.88) !important;
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Subtle footer branding */
+#loginPage::after {
+    content: "Powered by Jellyfin • CoericiusFlix";
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+    color: rgba(255,255,255,0.35);
+}
+
 /* ---- REMOVE WEIRD OUTLINES ---- */
 *:focus {
     outline: none !important;
