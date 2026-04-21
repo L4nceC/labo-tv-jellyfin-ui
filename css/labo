@@ -51,80 +51,52 @@ h2.sectionTitle.sectionTitle-cards::before {
 }
 
 /* =========================================
-   LaBo TV — Premium Section Titles
+   LaBo TV — Section Titles (FINAL WORKING)
 ========================================= */
 
-/* Base style */
-.sectionTitle {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+/* Target YOUR exact element */
+h2.sectionTitle.sectionTitle-cards {
 
-  font-size: 1.25em !important;
+/* Typography */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.3em !important;
   font-weight: 500 !important;
 
   letter-spacing: 0.6px;
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.9) !important;
 
-  margin-left: 18px;
-  margin-bottom: 12px;
-  margin-top: 6px;
-
+/* Layout */
   display: flex;
   align-items: center;
 
-  text-transform: none;
+  margin-left: 18px !important;
+  margin-bottom: 12px !important;
+  margin-top: 6px !important;
 }
 
-/* Clean divider line (your style) */
-.sectionTitle::before {
+/* Divider line */
+h2.sectionTitle.sectionTitle-cards::before {
   content: "";
-  display: inline-block;
 
   width: 22px;
   height: 2px;
 
   background: rgba(255,255,255,0.4);
-
   margin-right: 12px;
+
   border-radius: 2px;
 }
 
-/* Subtle hover polish (desktop only, safe fallback on TV) */
-.sectionTitle:hover {
-  color: #ffffff;
-}
-
-/* First section = slightly more emphasis */
-.homePage .sectionTitle:first-of-type {
-  color: #ffffff;
+/* First row highlight */
+.homePage .section:nth-of-type(1) h2.sectionTitle.sectionTitle-cards {
+  color: #ffffff !important;
   font-weight: 600 !important;
 }
 
-.homePage .sectionTitle:first-of-type::before {
+/* First row accent line */
+.homePage .section:nth-of-type(1) h2.sectionTitle.sectionTitle-cards::before {
   background: var(--primary);
   width: 26px;
-}
-
-/* Improve spacing between rows */
-.homePage .section {
-  margin-bottom: 6px;
-}
-
-/* Optional: arrow (like Netflix/Prime) */
-.sectionTitle .material-icons {
-  margin-left: 6px;
-  font-size: 18px;
-  opacity: 0.6;
-}
-
-/* Remove clutter around titles */
-.sectionTitleTextButton {
-  background: none !important;
-  border: none !important;
-}
-
-/* Smooth visual hierarchy */
-.homePage .sectionTitle {
-  transition: color 0.2s ease;
 }
 
 /* ---------- ROWS ---------- */
