@@ -48,7 +48,12 @@ h2.sectionTitle.sectionTitle-cards::before {
   background: rgba(255,255,255,0.4) !important;
   margin-right: 12px !important;
 }
-
+/* TEST — Section Titles */
+h2.sectionTitle.sectionTitle-cards {
+  color: #00ff88 !important;
+  font-size: 2em !important;
+  letter-spacing: 2px !important;
+}
 /* =========================================
    LaBo TV — Section Titles (FINAL WORKING)
 ========================================= */
