@@ -1,7 +1,9 @@
 /* =========================================
 LaBo TV Theme v2 (FIXED + BADGES WORKING)
 ========================================= */
-
+body {
+  background: red !important;
+}
 :root {
 --primary: #ff6a00;
 --bg: #0b0b0b;
