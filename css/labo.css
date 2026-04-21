@@ -1,6 +1,5 @@
 /* =====================================================
-   COERICIUSFLIX — CLEAN NETFLIX STYLE THEME
-   Built on ElegantFin
+   COERICIUSFLIX — CLEAN NETFLIX STYLE (HARD OVERRIDE)
 ===================================================== */
 
 /* =========================
@@ -11,8 +10,8 @@
 
 html, body {
     font-family: "Inter", sans-serif !important;
-    background-color: #0b0f14;
-    color: #e5e7eb;
+    background-color: #0b0f14 !important;
+    color: #e5e7eb !important;
 }
 
 /* =========================
@@ -33,16 +32,10 @@ html, body {
 
     --selectorBackgroundColor: rgba(255,255,255,0.08);
 
-    --card-bg: #141a22;
-    --card-hover: #1f2937;
+    --card-bg: transparent;
+    --card-hover: transparent;
 
     --uiAccentColor: #e50914;
-    --btnSubmitColor: #e50914;
-    --btnSubmitBorderColor: #ff2a2a;
-
-    /* 🔥 FIXED RAW URLS */
-    --loginPageBgUrl: url("https://raw.githubusercontent.com/L4nceC/labo-tv-jellyfin-ui/main/img/splashscreen.png");
-    --loginPageText: "CoericiusFlix";
 }
 
 /* =========================
@@ -55,7 +48,6 @@ html, body {
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Replace title with logo */
 .headerLeft .pageTitle {
     background: url("https://raw.githubusercontent.com/L4nceC/labo-tv-jellyfin-ui/main/img/logo.png") no-repeat left center;
     background-size: contain;
@@ -65,104 +57,131 @@ html, body {
 }
 
 /* =========================
-   4. CARDS (Netflix feel)
+   4. CARDS (NO BACKGROUND SYSTEM)
 ========================= */
 
-.cardBox {
-    border-radius: 12px !important;
-    overflow: hidden;
-    background: var(--card-bg);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* Kill ALL card backgrounds */
+.cardBox,
+.visualCardBox,
+.cardPadder,
+.cardOverlayContainer,
+.cardTextContainer,
+.innerCardFooter {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    border: none !important;
 }
 
-.card:hover .cardBox {
-    transform: scale(1.06);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-    background: var(--card-hover);
+/* Kill gradient overlays */
+.cardOverlayContainer::after,
+.cardOverlayContainer::before {
+    display: none !important;
+}
+
+/* Kill footer gradient from ElegantFin */
+.innerCardFooter {
+    background: none !important;
+}
+
+/* =========================
+   5. IMAGE + HOVER
+========================= */
+
+.cardScalable {
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+.card:hover .cardScalable {
+    transform: scale(1.05);
     z-index: 5;
 }
 
-/* smoother zoom */
 .cardImageContainer {
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease;
 }
 
 .card:hover .cardImageContainer {
-    transform: scale(1.00);
-}
-
-/* cinematic hover lift (ElegantFin override safe) */
-.card-hoverable:hover .cardScalable {
-    transform: scale(1.00);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    transform: scale(1.05);
 }
 
 /* =========================
-   5. TEXT
+   6. TEXT (FLOATING STYLE)
 ========================= */
 
+.innerCardFooter {
+    padding: 0.4em 0.2em !important;
+}
+
 .cardText {
-    font-weight: 500;
-    color: var(--textColor);
+    background: transparent !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    text-shadow: none !important;
 }
 
 .cardText-secondary {
-    color: var(--dimTextColor);
-}
-
-.sectionTitle {
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    color: #b3b3b3 !important;
 }
 
 /* =========================
-   6. BUTTONS
+   NETFLIX STYLE PLAY BUTTON
 ========================= */
 
-.emby-button {
-    border-radius: 6px !important;
-}
-
-.btnPlay,
-.btnPlay.detailButton {
-    background: var(--accent) !important;
-    color: white !important;
-    border: none;
-}
-
-.btnPlay:hover {
-    background: #ff2a2a !important;
-}
-
-.detailButton:not(.btnPlay) {
-    background: rgba(255,255,255,0.08);
-}
-
-/* play button on cards */
 .cardOverlayFab-primary {
-    background-color: var(--accent) !important;
+    background-color: rgba(20, 20, 20, 0.85) !important; /* dark glass */
+    border: 2px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
     border-radius: 50%;
-    transition: transform 0.2s ease;
+
+    width: 48px;
+    height: 48px;
+
+    transition: all 0.2s ease;
+}
+
+/* Fix the ugly blue triangle */
+.cardOverlayFab-primary .material-icons {
+    color: white !important;
+    font-size: 20px !important;
+}
+
+/* Smooth subtle hover (not cartoon zoom) */
+.card:hover .cardOverlayFab-primary {
+    transform: scale(1.05);
+    background-color: var(--accent) !important;
+    border-color: transparent;
+}
+
+/* Remove aggressive scaling from previous CSS */
+.cardOverlayFab-primary {
+    transform: scale(1) !important;
+}
+
+.cardOverlayFab-primary {
+    background: rgba(0,0,0,0.6) !important;
+    border: none;
+    backdrop-filter: blur(10px);
 }
 
 .card:hover .cardOverlayFab-primary {
-    transform: scale(1.1);
+    background: rgba(229, 9, 20, 0.95) !important;
 }
 
 /* =========================
-   7. BACKDROP / HERO
+   8. BACKDROP
 ========================= */
 
 .backgroundContainer.withBackdrop {
     background: linear-gradient(
         to bottom,
         rgba(0,0,0,0.2),
-        rgba(11,15,20,0.85) 60%,
+        rgba(11,15,20,0.9) 60%,
         #0b0f14 100%
     ) !important;
 }
 
-/* cinematic fade */
 .itemBackdrop::after {
     content: "";
     position: absolute;
@@ -172,15 +191,8 @@ html, body {
     background: linear-gradient(to top, #0b0f14, transparent);
 }
 
-/* title styling */
-.nameContainer h1 {
-    font-size: 3em;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-}
-
 /* =========================
-   8. LOGIN BRANDING
+   9. LOGIN
 ========================= */
 
 #loginPage {
@@ -194,91 +206,67 @@ html, body {
     border-radius: 20px;
 }
 
-.visualLoginForm::before,
-.manualLoginForm::before {
-    content: "";
-    display: block;
-    background: url("https://raw.githubusercontent.com/L4nceC/labo-tv-jellyfin-ui/main/img/logo.png") no-repeat center;
-    background-size: contain;
-    height: 120px;
-    margin-bottom: 10px;
-}
-
 /* =========================
-   9. UX POLISH
+   10. CLEANUP
 ========================= */
 
-/* remove clutter */
 .cardIndicators,
 .countIndicator,
 .mediaSourceIndicator {
     display: none !important;
 }
 
-/* smooth scroll */
-.emby-scroller {
-    scroll-behavior: smooth;
-}
-
-/* scrollbars */
-::-webkit-scrollbar {
-    height: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.15);
-    border-radius: 10px;
-}
-
-/* remove outlines */
 *:focus {
     outline: none !important;
 }
 
 /* =========================
-   10. ANIMATION
+   11. DEBUG KILL SWITCH (FORCE REMOVE ANY LEFTOVER)
 ========================= */
 
-.card {
-    animation: fadeIn 0.4s ease;
-}
+/* This nukes ANY remaining background layer 
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+.card * {
+    background-image: none !important;
+}*/
 
 /* =========================
-   11. REMOVE CARD TEXT BACKGROUND (FULL CLEAN)
+   FIX: REMOVE TITLE BACKGROUND ONLY
 ========================= */
 
-/* Kill ALL background layers behind text */
-
+/* Kill the dark rounded box */
 .innerCardFooter,
-.cardTextContainer,
-.cardOverlayContainer {
-    background: none !important;
+.cardTextContainer {
+    background: transparent !important;
     box-shadow: none !important;
     backdrop-filter: none !important;
+    border: none !important;
 }
 
-/* Remove gradient overlays */
+/* Remove ElegantFin gradient overlay */
+.cardOverlayContainer::before,
 .cardOverlayContainer::after {
     display: none !important;
 }
 
-/* Clean text styling */
+/* Remove text shadows / glow */
+.cardText {
+    text-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Keep spacing clean */
 .innerCardFooter {
     padding: 0.4em 0.2em !important;
 }
 
-.cardText {
-    background: transparent !important;
-    font-weight: 600;
+/* =========================
+   IMPORTANT: DO NOT TOUCH IMAGES
+========================= */
+
+/* Explicitly protect posters */
+.cardImage,
+.cardImageContainer img {
+    background-image: initial !important;
+    display: block !important;
 }
