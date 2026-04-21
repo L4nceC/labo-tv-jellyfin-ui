@@ -120,5 +120,36 @@ h2.sectionTitle.sectionTitle-cards::before {
   }
 }
 /* =========================================
+   🔧 IMAGE RENDER FIX (PC + TV SAFE)
+========================================= */
+
+/* Force image containers to behave normally */
+.cardImageContainer,
+.cardImage,
+.cardPadder {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Prevent lazy-load glitches */
+.cardImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  image-rendering: auto;
+}
+
+/* Kill anything hiding images */
+.cardImageContainer::before,
+.cardImageContainer::after {
+  display: none !important;
+  content: none !important;
+}
+/* =========================================
 END
 ========================================= */
