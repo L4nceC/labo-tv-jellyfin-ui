@@ -192,3 +192,22 @@ h1 {
     width: 100%;
     background: linear-gradient(to top, #0b0f14, transparent);
 }
+
+/* === COERICIUSFLIX CORE THEME === */
+
+:root {
+    --uiAccentColor: #e50914;
+    --btnSubmitColor: #e50914;
+    --btnSubmitBorderColor: #ff2a2a;
+
+    --darkerGradientPoint: #0b0b0f;
+    --lighterGradientPoint: #14141c;
+
+    --headerColor: rgba(10, 10, 15, 0.85);
+    --drawerColor: rgba(15, 15, 20, 0.95);
+
+    --textColor: #ffffff;
+    --dimTextColor: #b3b3b3;
+
+    --selectorBackgroundColor: rgba(255,255,255,0.08);
+}
