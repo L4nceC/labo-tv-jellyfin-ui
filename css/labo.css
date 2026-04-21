@@ -164,8 +164,13 @@ h2.sectionTitle.sectionTitle-cards::before {
   z-index: 20;
 }
 
-/* ---------- NEW BADGE ---------- */
-.homePage .itemsContainer:first-of-type .cardBox::after {
+/* =========================================
+   🆕 NEW BADGE — FIXED (ONLY FIRST ROW)
+========================================= */
+
+/* Target ONLY first section on homepage */
+.homePage .section:nth-of-type(1) 
+.itemsContainer .cardBox::after {
   content: "NEW";
 
   position: absolute;
@@ -184,8 +189,9 @@ h2.sectionTitle.sectionTitle-cards::before {
   z-index: 30;
 }
 
-/* Limit to first 5 */
-.homePage .itemsContainer:first-of-type .cardBox:nth-child(n+6)::after {
+/* Limit to first 5 items ONLY */
+.homePage .section:nth-of-type(1) 
+.itemsContainer .cardBox:nth-child(n+6)::after {
   display: none;
 }
 
