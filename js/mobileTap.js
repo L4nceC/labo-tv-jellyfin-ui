@@ -1,10 +1,15 @@
 /* =====================================================
-   COERICIUSFLIX — SMART MOBILE TAP BEHAVIOUR v4
+   COERICIUSFLIX — SMART MOBILE TAP BEHAVIOUR v5
+   Loader / SPA Safe
 ===================================================== */
 
 (function () {
 
+    let tapInterval = null;
+
     function attachSmartMobileTap() {
+
+        if (!document.body) return;
 
         if (!document.body.classList.contains("mode-mobile")) return;
 
@@ -28,6 +33,7 @@
 
                 if (!playBtn) return;
 
+                /* Allow direct overlay click normally */
                 if (e.target.closest(".cardOverlayFab-primary")) return;
 
                 e.preventDefault();
@@ -38,6 +44,19 @@
         });
     }
 
-    setInterval(attachSmartMobileTap, 1500);
+    function init() {
+
+        attachSmartMobileTap();
+
+        if (!tapInterval) {
+            tapInterval = setInterval(attachSmartMobileTap, 1500);
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
 
 })();
