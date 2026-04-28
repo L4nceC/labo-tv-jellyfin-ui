@@ -1,82 +1,42 @@
 /* =====================================================
-   COERICIUSFLIX — DESKTOP DETAILS HERO V1
+   COERICIUSFLIX — DESKTOP DETAILS HERO V2
+   (Adjusted for Your DOM)
 ===================================================== */
 
 body.mode-desktop .detailPagePrimaryContainer {
-    position: relative;
-    display: flex;
-    gap: 48px;
-    align-items: flex-start;
+    display: flex !important;
+    gap: 48px !important;
+    align-items: flex-start !important;
     padding: 48px 64px 32px !important;
 }
 
 /* Poster */
 body.mode-desktop .detailImageContainer {
-    flex: 0 0 420px;
-    max-width: 420px;
+    flex: 0 0 420px !important;
+    max-width: 420px !important;
 }
 
-body.mode-desktop .detailImageContainer .card,
 body.mode-desktop .detailImageContainer img {
     border-radius: 18px !important;
-    overflow: hidden;
-    box-shadow:
-        0 20px 50px rgba(0,0,0,0.65);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.65) !important;
 }
 
-/* Metadata / Info Panel */
-body.mode-desktop .detailPagePrimaryContent {
-    flex: 1;
-    padding: 28px 32px !important;
-
-    background: rgba(20,20,20,0.72);
+/* Main Content Panel */
+body.mode-desktop .detailPageContent {
+    background: rgba(20,20,20,0.72) !important;
     backdrop-filter: blur(18px);
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,0.45);
+    border-radius: 18px !important;
+    padding: 32px !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45) !important;
+    flex: 1 !important;
 }
 
-/* Logo Title Area */
-body.mode-desktop .itemName {
-    font-size: 2.4rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 10px !important;
-}
-
-/* Metadata Row */
-body.mode-desktop .itemMiscInfo {
-    font-size: 1rem;
-    opacity: 0.88;
-    margin-bottom: 24px;
-}
-
-/* Buttons */
-body.mode-desktop .mainDetailButtons {
-    gap: 12px;
-}
-
-body.mode-desktop .mainDetailButtons .btnPlay,
-body.mode-desktop .mainDetailButtons .raised {
-    border-radius: 10px !important;
-    padding: 12px 24px !important;
-    font-weight: 600 !important;
-}
-
-/* Synopsis */
-body.mode-desktop .overview {
-    font-size: 1rem;
-    line-height: 1.65;
-    max-width: 1100px;
-}
-
-/* Secondary Sections */
+/* Secondary Content */
 body.mode-desktop .detailPageSecondaryContainer {
     padding: 0 64px 48px !important;
 }
 
-/* Episode / Cast / Similar Rows */
+/* Section Spacing */
 body.mode-desktop .verticalSection {
     margin-top: 36px !important;
 }
