@@ -1,8 +1,5 @@
 /* =====================================================
    COERICIUSFLIX — BADGE SYSTEM (FINAL BUILD v5)
-   ✅ Type-aware badges
-   ✅ Status-Based New Season Detection
-   ✅ Continuing Show Logic
 ===================================================== */
 
 (function () {
@@ -50,7 +47,7 @@
         const d = new Date(dateStr);
         if (isNaN(d)) return false;
 
-        const diff = (new Date() - d) / (1000 * 60 * 60 * 24);
+        const diff = (new Date() - d) / 86400000;
         return diff <= days;
     }
 
@@ -72,10 +69,6 @@
             item.CollectionType === "tvshows"
         );
     }
-
-    /* =========================
-       NEW SEASON DETECTION
-    ========================= */
 
     async function hasNewSeason(item) {
 
@@ -121,7 +114,7 @@
                 }
             );
 
-            const epData = await res.json();
+            const epData = await epRes.json();
             const episodes = epData.Items || [];
 
             const hasRecentEpisode = episodes.some(ep =>
@@ -138,7 +131,6 @@
     }
 
     function getBadgeLabel(badge, item) {
-
         if (badge === "new") {
             if (item.Type === "Movie") return "NEW MOVIE";
             if (item.Type === "Series") return "NEW SERIES";
@@ -152,11 +144,9 @@
     }
 
     async function processCards() {
-
         const cards = document.querySelectorAll(".card");
 
         for (const card of cards) {
-
             const itemId = card.getAttribute("data-id");
             if (!itemId) continue;
 
@@ -183,12 +173,7 @@
 
             if (badge) {
                 card.setAttribute("data-badge", badge);
-
-                const label = getBadgeLabel(badge, item);
-                if (label) {
-                    card.setAttribute("data-badge-label", label);
-                }
-
+                card.setAttribute("data-badge-label", getBadgeLabel(badge, item));
             } else {
                 card.removeAttribute("data-badge");
                 card.removeAttribute("data-badge-label");
