@@ -4,3 +4,21 @@ html, body {
     font-family: "Inter", sans-serif !important;
     color: #e5e7eb !important;
 }
+
+/* =========================
+   ICON FONT FIX
+========================= */
+
+.material-icons,
+.material-icons-round,
+.material-icons-sharp,
+.material-icons-outlined,
+.cardOverlayFab-primary .material-icons {
+    font-family: "Material Icons" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    white-space: nowrap !important;
+    direction: ltr !important;
+}
