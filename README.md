@@ -1,1 +1,1 @@
-v1.0-launch
+v1.0 - Stable 
