@@ -2,9 +2,7 @@
    COERICIUSFLIX — DESKTOP DETAILS HERO V2
    (Adjusted for Your DOM)
 ===================================================== */
-.detailPagePrimaryContainer {
-    background: red !important;
-}
+
 body.mode-desktop .detailPagePrimaryContainer {
     display: flex !important;
     gap: 48px !important;
