@@ -72,3 +72,48 @@ body.mode-desktop .verticalSection {
 
     margin-top: 40px !important;
 }
+/* =========================================
+   DETAILS PAGE FIX PACK v2
+   Expands Metadata / Buttons / Overview
+========================================= */
+
+body.mode-desktop .infoWrapper,
+body.mode-desktop .nameContainer,
+body.mode-desktop .itemMiscInfo,
+body.mode-desktop .mainDetailButtons,
+body.mode-desktop .detailSectionContent {
+
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+
+/* Stack metadata naturally */
+body.mode-desktop .infoWrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+}
+
+/* Make buttons stay inline */
+body.mode-desktop .mainDetailButtons {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 14px !important;
+}
+
+/* Ensure overview sits BELOW buttons */
+body.mode-desktop .detailSectionContent {
+    margin-top: 24px !important;
+}
+
+/* Prevent title truncation */
+body.mode-desktop .nameContainer {
+    overflow: visible !important;
+}
+
+body.mode-desktop .itemName {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+}
