@@ -1,6 +1,6 @@
 /* =========================================
    CoericiusFLIX DETAIL PAGE GRID FOUNDATION
-========================================= */
+========================================= 
 
 body.mode-desktop #itemDetailPage .detailSection {
     display: grid !important;
@@ -12,14 +12,14 @@ body.mode-desktop #itemDetailPage .detailSection {
     align-items: start !important;
 }
 
-/* Poster Column */
+/* Poster Column 
 body.mode-desktop .detailImageContainer {
     grid-column: 1 !important;
     grid-row: 1 !important;
     width: 320px !important;
 }
 
-/* Main Metadata / Hero Area */
+/* Main Metadata / Hero Area 
 body.mode-desktop .detailSectionContent {
     grid-column: 2 / 5 !important;
     grid-row: 1 !important;
@@ -27,24 +27,24 @@ body.mode-desktop .detailSectionContent {
     min-height: unset !important;
 }
 
-/* Extra Details / Tags / Genres */
+/* Extra Details / Tags / Genres 
 body.mode-desktop .itemDetailsGroup {
     grid-column: 1 / 3 !important;
 }
 
-/* Track Selections */
+/* Track Selections 
 body.mode-desktop .trackSelections {
     grid-column: 3 / 5 !important;
 }
 
-/* Episode / Season Rows Full Width */
+/* Episode / Season Rows Full Width 
 body.mode-desktop .nextUpSection,
 body.mode-desktop #listChildrenCollapsible,
 body.mode-desktop .verticalSection {
     grid-column: 1 / -1 !important;
 }
 
-/* FULL NETFLIX HERO LAYOUT */
+/* FULL NETFLIX HERO LAYOUT 
 .mode-desktop #itemBackdrop {
     position: absolute !important;
     top: 0;
@@ -62,7 +62,7 @@ body.mode-desktop .verticalSection {
     z-index: 0;
 }
 
-/* Push content over hero */
+/* Push content over hero 
 .mode-desktop .detailPageWrapperContainer {
     position: relative;
     z-index: 2;
@@ -70,28 +70,29 @@ body.mode-desktop .verticalSection {
     background: transparent !important;
 }
 
-/* Hide poster */
+/* Hide poster 
 .mode-desktop .detailImageContainer {
     display: none !important;
 }
 
-/* Constrain content */
+/* Constrain content
 .mode-desktop .detailPagePrimaryContainer {
     width: min(1400px, 88%);
     margin: 0 auto;
     align-items: flex-start !important;
 }
 
-/* Logo positioning */
+/* Logo positioning 
 .mode-desktop .detailLogo {
     width: 420px !important;
     max-width: 35vw !important;
     margin-bottom: 2rem !important;
 }
 
-/* Dark overlay behind metadata row */
+/* Dark overlay behind metadata row 
 .mode-desktop .detailRibbon {
     background: rgba(20,20,20,0.82) !important;
     backdrop-filter: blur(10px);
     border-radius: 12px;
 }
+*/
