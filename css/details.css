@@ -1,96 +1,142 @@
-/* =========================
-   DESKTOP DETAIL PAGE V2
-   ========================= */
+/* =========================================
+   NETFLIX STYLE DETAIL PAGE - DESKTOP ONLY
+   ========================================= */
 
-.layout-desktop .itemBackdrop{
-    display:block!important;
-    height:68vh!important;
-    mask-image:linear-gradient(to bottom,black 70%,transparent 100%);
-    -webkit-mask-image:linear-gradient(to bottom,black 70%,transparent 100%);
+/* ---------- HERO BACKDROP ---------- */
+.layout-desktop .itemBackdrop {
+    display: block !important;
+    height: 72vh !important;
+    position: relative;
+    z-index: 1;
+    mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
 }
 
-/* Pull content upward into hero */
-.layout-desktop .detailPageWrapperContainer{
-    margin-top:-22vh;
-    padding-top:0!important;
-    position:relative;
-    z-index:3;
-    background:linear-gradient(
-        to bottom,
-        rgba(0,0,0,0) 0%,
-        rgba(0,0,0,.35) 25%,
-        rgba(0,0,0,.85) 60%,
-        rgba(0,0,0,1) 100%
-    );
+/* ---------- BACKDROP WRAPPER / FADE ---------- */
+.layout-desktop .detailPageWrapperContainer {
+    margin-top: -18vh;
+    padding-top: 0 !important;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0) 0%,
+            rgba(0,0,0,0.35) 25%,
+            rgba(0,0,0,0.85) 65%,
+            rgba(0,0,0,1) 100%
+        );
+    position: relative;
+    z-index: 3;
 }
 
-/* Logo closer to metadata */
-.layout-desktop .detailLogo{
-    position:absolute!important;
-    top:26vh;
-    left:50%;
-    transform:translateX(-50%);
-    width:28%;
-    height:14vh;
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:center;
-    z-index:5;
+/* ---------- FLOATING CLEAR LOGO ---------- */
+.layout-desktop .detailLogo {
+    position: absolute !important;
+    top: 32vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34%;
+    height: 18vh;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 5;
 }
 
-/* Primary block tighter */
-.layout-desktop .detailRibbon{
-    width:min(1200px,85vw);
-    margin:0 auto 1rem auto;
-    padding:1rem 2rem;
-    background:rgba(15,15,15,.78);
-    backdrop-filter:blur(14px);
-    border-radius:14px;
+/* ---------- MAIN PRIMARY CONTAINER ---------- */
+.layout-desktop .detailPagePrimaryContainer {
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    padding-top: 0 !important;
 }
 
-/* Title smaller and cleaner */
-.layout-desktop .nameContainer h1{
-    font-size:2.6rem!important;
-    margin-bottom:.25rem;
+/* ---------- METADATA / BUTTON BAR ---------- */
+.layout-desktop .detailRibbon {
+    width: min(1300px, 88vw);
+    margin: 0 auto 2rem auto;
+    padding: 1.4rem 2rem;
+    background: rgba(20,20,20,0.82);
+    backdrop-filter: blur(14px);
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-/* Buttons */
-.layout-desktop .mainDetailButtons{
-    margin-top:.75rem;
-    gap:.5rem;
+/* ---------- TITLE ---------- */
+.layout-desktop .nameContainer h1 {
+    font-size: 3rem !important;
+    font-weight: 700;
+    margin-bottom: .4rem;
 }
 
-/* Two-column content */
-.layout-desktop .detailSection{
-    max-width:1200px;
-    margin:1.5rem auto 0 auto;
-    display:grid;
-    grid-template-columns:1.3fr .7fr;
-    gap:3rem;
-    align-items:start;
+/* ---------- OVERVIEW / TEXT ---------- */
+.layout-desktop .detailSectionContent {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 4rem;
+    align-items: start;
 }
 
-/* Overview cleaner */
-.layout-desktop .detailSectionContent{
-    margin-top:0;
+/* ---------- TAGLINE ---------- */
+.layout-desktop .tagline {
+    font-size: 1.4rem;
+    font-style: italic;
+    opacity: .9;
+    margin-bottom: 1rem;
 }
 
-/* Metadata box */
-.layout-desktop .itemDetailsGroup{
-    background:rgba(255,255,255,.04);
-    border-radius:14px;
-    padding:1rem 1.25rem;
-    backdrop-filter:blur(10px);
+/* ---------- ITEM DETAILS BOX ---------- */
+.layout-desktop .itemDetailsGroup {
+    background: rgba(255,255,255,0.04);
+    border-radius: 14px;
+    padding: 1.25rem;
+    backdrop-filter: blur(10px);
 }
 
-/* Reduce excessive spacing */
-.layout-desktop .detailPageContent{
-    gap:1rem!important;
+/* ---------- BUTTONS ---------- */
+.layout-desktop .detailButton:not(.btnPlay) {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 50%;
+    padding: .8rem !important;
+    transition: .2s ease;
 }
 
-/* Optional: better tagline styling */
-.layout-desktop .tagline{
-    font-size:1.2rem;
-    opacity:.85;
-    margin-bottom:1rem;
+.layout-desktop .detailButton:not(.btnPlay):hover {
+    background: rgba(255,255,255,0.12) !important;
+}
+
+/* ---------- PLAY BUTTON ---------- */
+.layout-desktop .btnPlay.detailButton {
+    background: white !important;
+    color: black !important;
+    border-radius: 999px !important;
+    padding: .8rem 2rem !important;
+    font-weight: 700;
+    min-width: 170px;
+}
+
+/* ---------- CAST / CREW ---------- */
+.layout-desktop #castCollapsible {
+    max-width: 1300px;
+    margin: 3rem auto 0 auto;
+}
+
+/* ---------- SECTION SPACING ---------- */
+.layout-desktop .detailSection {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+}
+
+/* ---------- HIDE DEFAULT POSTER IF USING HERO STYLE ---------- */
+.layout-desktop .detailImageContainer .card {
+    display: none !important;
 }
