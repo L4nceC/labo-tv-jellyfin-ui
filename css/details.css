@@ -45,15 +45,16 @@ body.mode-desktop .verticalSection {
 }
 
 /* NETFLIX HERO FOUNDATION */
-.mode-desktop .backdropContainer,
-.mode-desktop .backgroundContainer,
-.mode-desktop .itemBackdrop,
-.mode-desktop .detailBackdrop {
-    outline: 3px solid red !important;
-    min-height: 70vh !important;
-}
-.mode-desktop .detailImageContainer {
-    display: none !important;
+.mode-desktop #itemBackdrop {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    filter: none !important;
+    visibility: visible !important;
+    display: block !important;
+    z-index: 0 !important;
 }
 
 /* NETFLIX HERO BACKDROP IMAGE FIX */
