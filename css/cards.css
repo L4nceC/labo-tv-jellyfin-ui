@@ -15,6 +15,7 @@
         transform 0.22s ease;
 }
 
+.cardText.cardTextCentered.cardText-first,
 .cardText.cardTextCentered.cardText-secondary {
     display: none !important;
 }
