@@ -1,11 +1,16 @@
 .skinHeader,
-.emby-tabs-slider,
 .headerTop {
     background: rgba(10,10,10,0.35) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
     box-shadow: none !important;
     border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.emby-tabs-slider,
+.emby-tab-button,
+.emby-button-foreground {
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 body.mode-desktop .headerLeft .pageTitle,
