@@ -1,6 +1,11 @@
-.skinHeader {
-    background: rgba(10,10,15,0.85) !important;
-    backdrop-filter: blur(10px);
+.skinHeader,
+.emby-tabs-slider,
+.headerTop {
+    background: rgba(10,10,10,0.35) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
 body.mode-desktop .headerLeft .pageTitle,
