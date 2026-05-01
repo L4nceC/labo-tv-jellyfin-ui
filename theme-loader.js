@@ -8,6 +8,7 @@
         "https://l4ncec.github.io/coericiusflix/js/badges.js",
         "https://l4ncec.github.io/coericiusflix/js/mobileTap.js",
         "https://l4ncec.github.io/coericiusflix/js/device.js"
+        "https://l4ncec.github.io/coericiusflix/js/customdetails.js"
     ];
 
     scripts.forEach(src => {
